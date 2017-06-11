@@ -4,6 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
+//
+// Classe MainFrame - JFrame
+//
+// Descrição: Classe do frame principal do jogo. Sobre ele são inseridos os diversos painéis de jogo.
+//
+// Métodos: MainFrame (Construtor), StartMenu, CharSelectMenu, GameMenu, ChooseDice, RepaintMap
+//
+
 public class MainFrame extends JFrame {
 	public final int DEFAULT_WIDTH = 1200; //800;
 	public final int DEFAULT_HEIGHT = 1000;//700;
@@ -11,6 +19,14 @@ public class MainFrame extends JFrame {
 	MapPanel m;
 	CardPanel c;
 	PlayMenu p;
+	
+	//
+	// Construtor MainFrame
+	//
+	// Descrição: Inicializa o frame principal do jogo com as propriedades default.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
 	
 	public MainFrame(){		
 		super("Clue!");
@@ -40,6 +56,16 @@ public class MainFrame extends JFrame {
 		}
 	}
 	
+	//
+	// Método StartMenu
+	//
+	// Descrição: Adiciona ao frame o painel de inicio de jogo.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
+	// Retorno: Sem retorno.
+	//
+	
 	public void StartMenu(){
 		StartPanel p = new StartPanel(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		p.IniButtons(p.getInsets(), DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -49,6 +75,16 @@ public class MainFrame extends JFrame {
 		getContentPane().add(p);
 	}
 	
+	//
+	// Método CharSelectMenu
+	//
+	// Descrição: Adiciona o painel de seleção de personagens ao frame.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
+	// Retornos: Sem retornos.
+	//
+	
 	public void CharSelectMenu(){
 		CharSelectPanel p = new CharSelectPanel(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		p.IniCharList();
@@ -57,6 +93,16 @@ public class MainFrame extends JFrame {
 		
 		getContentPane().add(p);
 	}
+	
+	//
+	// Método GameMenu
+	//
+	// Descrição: Inicia os painéis de dado, do mapa, dos dados e das cartas, que compõem a interface principal do jogo.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void GameMenu(){
 		JPanel base = new JPanel(new GridBagLayout());
@@ -109,9 +155,29 @@ public class MainFrame extends JFrame {
 		
 	}
 	
+	//
+	// Método ChooseDice
+	//
+	// Descrição: Delega a atualização da imagem do dado para o painel de dados.
+	//
+	// Parâmetros: int value - Novo valor do dado.
+	//
+	// Retorno: Sem retorno.
+	//
+	
 	public void ChooseDice(int value){
 		d.SetImage(value);
 	}
+	
+	//
+	// Método RepaintMap
+	//
+	// Descrição: Repinta o mapa, após atualizações de posição dos jogadores.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void RepaintMap(){
 		m.repaint();

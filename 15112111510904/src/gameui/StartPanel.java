@@ -5,7 +5,25 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+//
+// Classe TratadorNovoJogo
+//
+// Descrição: Tradador do botão NOVO JOGO.
+//
+// Métodos: actionPerformed
+//
+
 final class TratadorNovoJogo implements ActionListener {
+	
+	//
+	// Método actionPerformed
+	//
+	// Descrição: Lida com o clique no botão NOVO JOGO.
+	//
+	// Parâmetros: ActionEvent e - Referência ao evento sobre o botão.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void actionPerformed(ActionEvent e) {
 		UI.mainf.dispose();
@@ -13,23 +31,66 @@ final class TratadorNovoJogo implements ActionListener {
 	}
 }
 
+//
+// Classe TratadorCarregarJogo - ActionListener
+//
+// Descrição: Tratador do botão de carregamento de partida.
+//
+// Métodos: TratadorCarregarJogo (Construtor), actionPerformed
+//
+
 final class TratadorCarregarJogo implements ActionListener {
 	private JFileChooser fc;
 	private Component parent;
+	
+	//
+	// Construtor TratadorCarregarJogo
+	//
+	// Descrição: Abre um file chooser para a seleção de um arquivo de partida.
+	//
+	// Parâmetros: Component parent - Referência ao ascendente dessa classe.
+	//
 	
 	public TratadorCarregarJogo(Component parent) {
 		fc = new JFileChooser();
 		this.parent = parent;
 	}
 	
+	//
+	// Método actionPerformed
+	//
+	// Descrição: Lida com o clique sobre o botão de carregamento de jogo.
+	//
+	// Parâmetro: ActionEvent e - Referência para o evento sobre o botão de carregamento de jogo.
+	//
+	// Retorno: Sem retorno.
+	//
+	
 	public void actionPerformed(ActionEvent e) {
 		fc.showOpenDialog(parent);
 	}
 }
+
+//
+// Classe StartPanel - JPanel
+//
+// Descrição: Painel de início de jogo. Contém os botões NOVO JOGO e CARREGAR JOGO.
+//
+// Métodos: StartPanel (Construtor), paintComponent, IniButtons
+//
+
 public class StartPanel extends JPanel {
 	int width;
 	int height;
 	Image img;
+	
+	//
+	// Construtor StartPanel
+	//
+	// Descrição: Inicia o painel com sua largura e sua altura, também carregando a imagem do título.
+	//
+	// Parâmetros: int w - Largura do painel, int h - Altura do painel.
+	//
 	
 	public StartPanel(int w, int h) {
 		super();
@@ -45,6 +106,16 @@ public class StartPanel extends JPanel {
 		}
 	}
 	
+	//
+	// Método paintComponent
+	//
+	// Descrição: Pinta os componentes do painel, nesse caso o título "CLUE".
+	//
+	// Parâmetros: Graphics g - Referência ao módulo de gráficos do Swing.
+	//
+	// Retorno: Sem retorno.
+	//
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
@@ -54,6 +125,16 @@ public class StartPanel extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawString("Inicie um jogo novo ou carrege um antigo!", this.width/2 - 173, this.height/2 - 75);
 	}
+	
+	//
+	// Método IniButtons
+	//
+	// Descrição: Inicializa os botões no painel.
+	//
+	// Parâmetros: Insets in - Dimensões do container, int width - Largura do painel, int height - Altura do painel.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void IniButtons(Insets in, int width, int height) {
 		JButton b1 = new JButton("Novo Jogo");

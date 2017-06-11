@@ -8,7 +8,26 @@ import java.awt.geom.*;
 import java.io.*;
 import java.util.*;
 
+//
+// Classe MapHandler - MouseListener
+//
+// Descrição: Listener do mouse em cima do mapa. Certos métodos são deixados vazios para satisfazer a interface MouseListener.
+//
+// Métodos: mouseClicked
+//
+
 final class MapHandler implements MouseListener{
+	
+	//
+	// Método mouseClicked
+	//
+	// Descrição: Decide o que é feito quando ocorre um clique do mouse em cima do mapa.
+	//
+	// Parâmetro: MouseEvent e - Referência ao evento do mouse.
+	//
+	// Retorno: Sem retorno.
+	//
+	
 	public void mouseClicked(MouseEvent e){
 		Iterator<Player> players = Control.getPlayersIt();
 		Player first = players.next();
@@ -24,10 +43,26 @@ final class MapHandler implements MouseListener{
 	
 }
 
+//
+// Classe MapPanel - JPanel
+//
+// Descrição: Painel do mapa, responsável por identificar o ações sobre o mapa e passar para o módulo de controle quando for apropriado.
+//
+// Métodos: MapPanel (Construtor), paintComponent
+//
+
 public class MapPanel extends JPanel {
 	int width;
 	int height;
 	Image map;
+	
+	//
+	// Construtor MapPanel
+	//
+	// Descrição: Inicializa o painel do mapa, definindo suas dimensões e adicionando a relações com o listener.
+	//
+	// Parâmetros: int w - Largura do painel do mapa, int h - Altura do painel do mapa.
+	//
 	
 	public MapPanel(int w, int h){
 		super(null);
@@ -42,6 +77,16 @@ public class MapPanel extends JPanel {
 		}
 		this.addMouseListener(new MapHandler());
 	}
+	
+	//
+	// Método paintComponent
+	//
+	// Descrição: Método chamado automaticamente ao instanciar a classe e chamado posteriormente pelo método de JPanel repaint(). Esse método normalmente não é chamado explícitamente.
+	//
+	// Parâmetros: Graphics g - Referência ao módulo de gráficos do Swing.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);

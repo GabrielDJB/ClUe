@@ -4,13 +4,39 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+//
+// Classe TratadorOK - Action Listener
+//
+// Descrição: Listener do botão OK, adicionando os players ao jogo quando o botão é ativado.
+//
+// Métodos: TratadorOK (Construtor) ,actionPerformed
+//
+
 final class TratadorOK implements ActionListener {
 	
 	JCheckBox boxes[];
 	
+	//
+	// Método TratadorOK - Construtor
+	//
+	// Descrição: Construtor do listener, administrando os checkboxes do painel.
+	//
+	// Parâmetros: JCheckBox b[] - Vetor com as referências dos checkboxes no painel.
+	//
+	
 	public TratadorOK(JCheckBox b[]) {
 		boxes = b;
 	}
+	
+	//
+	// Método actionPerformed
+	//
+	// Descrição: Quando o botão for clicado, adiciona os jogadores selecionados no painel no momento da ação.
+	//
+	// Parâmetros: ActionEvent e - Referência à ação realizada sobre o botão OK.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void actionPerformed(ActionEvent e) {
 		for (JCheckBox b : boxes) {
@@ -24,7 +50,25 @@ final class TratadorOK implements ActionListener {
 	}
 }
 
+//
+// Classe TratadorCancelar - Action Listener
+//
+// Descrição: Listener do botão cancelar, voltando para o frame do jogo.
+//
+// Métodos: actionPerformed
+//
+
 final class TratadorCancelar implements ActionListener {
+	
+	//
+	// Método actionPerformed
+	//
+	// Descrição: Quando o botão cancelar for clicado, esse método volta para o frame inicial.
+	//
+	// Parâmetros: ActionEvent e - Referência à ação realizada sobre o botão.
+	//
+	// Retorno: Sem retornos.
+	//
 	
 	public void actionPerformed(ActionEvent e) {
 		UI.mainf.dispose();
@@ -32,16 +76,44 @@ final class TratadorCancelar implements ActionListener {
 	}
 }
 
+//
+// Classe CharSelectPanel - JPanel
+//
+// Descrição: Painel de seleção de personagens do jogo, ativado ao início de uma nova partida.
+//
+// Variáveis: Sem variáveis visíveis.
+//
+// Métodos: CharSelectPanel (Construtor), IniCharList, UserButtons
+//
+
 public class CharSelectPanel extends JPanel {
 	int width;
 	int height;
 	JCheckBox boxes[];
+	
+	//
+	// Construtor CharSelectPanel
+	//
+	// Descrição: Instancia essa classe inicalizando parte das variáveis. Para uma inicialização completa, deve ser seguinda do método IniCharList.
+	//
+	// Parâmetros: int w - Largura do painel, int h - Altura do painel.
+	//
 	
 	public CharSelectPanel(int w, int h) {
 		this.width = w;
 		this.height = h;
 		boxes = new JCheckBox[7];
 	}
+	
+	//
+	// Método IniCharList
+	//
+	// Descrição: Inicializa todas as caixas de seleção de jogadores.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
+	// Retorno: Sem retornos.
+	//
 	
 	public void IniCharList() {
 		JLabel l = new JLabel("Selecione os personagens da partida: ");
@@ -71,6 +143,16 @@ public class CharSelectPanel extends JPanel {
 			this.add(b);
 		}
 	}
+	
+	//
+	// Método UserButtons
+	//
+	// Descrição: Inicializa os botões OK e CANCELAR, funcionando como as opções de saída da tela.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void UserButtons() {
 		JButton ok = new JButton("OK");

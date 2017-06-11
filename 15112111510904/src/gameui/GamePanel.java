@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
+//
+// Classe GamePanel - JPanel (Classe Não Utilizada!!)
+//
+// Descrição: Painel do jogo original. Foi decomposto em diversos painéis diferentes. Caiu no desuso.
+//
+
 public class GamePanel extends JPanel {
 	int width;
 	int height;

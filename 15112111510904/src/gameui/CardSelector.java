@@ -4,11 +4,29 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//
+// Classe CardSelector - JPanel
+//
+// Descrição: Painel do frame de seleção de cartas. Posteriormente deve adicionar o bloco de notas do jogador, com carregamento de seleções de cada jogador.
+//
+// Variáveis: Sem variáveis públicas.
+//
+// Métodos: CardSelector (Construtor)
+//
+
 public class CardSelector extends JPanel {
 	JCheckBox armas[] = new JCheckBox[6];
 	JCheckBox comodos[] = new JCheckBox[9];
 	JCheckBox suspeitos[] = new JCheckBox[6];
 	JLabel armasl, comodosl, suspeitosl;
+	
+	//
+	// Método CardSelector - Construtor
+	//
+	// Descrição: Inicializa o painel, adicionando os botões referentes às possíveis cartas.
+	//
+	// Parâmetros: Container c - Referência ao container no qual o painel será inserido.
+	//
 	
 	public CardSelector(Container c){
 		super(null);

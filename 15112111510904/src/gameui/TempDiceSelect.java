@@ -5,10 +5,26 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+//
+// Classe DiceOKHandler - Action Listener
+//
+// Descrição: Listener do botão OK no painel de seleções de dados.
+//
+// Métodos: DiceOKHandler (Construtor), actionPerformed
+//
+
 final class DiceOKHandler implements ActionListener {
 	
 	JRadioButton dado1, dado2, dado3, dado4, dado5, dado6;
 	int value;
+	
+	//
+	// Construtor DiceOKHandler
+	//
+	// Descrição: Instancia o listener.
+	//
+	// Parâmetros: JRadioButton d... - Referência aos JRadioButtons do painel.
+	//
 	
 	public DiceOKHandler(JRadioButton d1, JRadioButton d2, JRadioButton d3, JRadioButton d4, JRadioButton d5, JRadioButton d6) {
 		dado1 = d1;
@@ -18,6 +34,16 @@ final class DiceOKHandler implements ActionListener {
 		dado5 = d5;
 		dado6 = d6;
 	}
+	
+	//
+	// Método actionPerformed
+	//
+	// Descrição: Quando clicado o botão OK, o valor selecionado nos JRadioButtons é passado para o módulo UI para delegar e mudar o dado.
+	//
+	// Parâmetros: ActionEvent e - Referência ao evento de clique sobre o botão OK.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void actionPerformed(ActionEvent e) {
 		if(dado1.isSelected()){
@@ -50,12 +76,38 @@ final class DiceOKHandler implements ActionListener {
 	}
 }
 
+//
+// Classe DiceCancelHandler - Action Listener
+//
+// Descrição: Listener do botão cancela. Quando ativado, fecha a janela e volta para a tela principal.
+//
+// Métodos: actionPerformed
+//
+
 final class DiceCancelHandler implements ActionListener {
+	
+	//
+	// Métodos actionPerformed
+	//
+	// Descrição: Quando clicado o botão CANCELA, volta para a tela principal, fechando a janela de dados.
+	//
+	// Parâmetros: ActionEvent e - Referência ao evento de clique sobre o botão.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void actionPerformed(ActionEvent e) {
 		UI.DiceClose();
 	}
 }
+
+//
+// Classe TempDiceSelect
+//
+// Descrição: Painel de seleção de dados. Quando selecionado um valor e clicado OK, passa o valor para a atualização da imagem.
+//
+// Método: TempDiceSelect (Construtor), DiceButtons
+//
 
 public class TempDiceSelect extends JPanel {
 	int value;
@@ -65,6 +117,14 @@ public class TempDiceSelect extends JPanel {
 	JRadioButton d4;
 	JRadioButton d5;
 	JRadioButton d6;
+	
+	//
+	// Construtor TempDiceSelect
+	//
+	// Descrição: Instancia o painel, inicializando os JRadioButtons.
+	//
+	// Parâmetros: Container c - Referência para o container do painel.
+	//
 	
 	public TempDiceSelect(Container c){
 		super(null);
@@ -101,6 +161,16 @@ public class TempDiceSelect extends JPanel {
 		c.add(this);
 		
 	}
+	
+	//
+	// Método DiceButtons
+	//
+	// Descrição: Incializa os botões OK e Cancelar no painel.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void DiceButtons() {
 		

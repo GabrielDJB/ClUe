@@ -6,18 +6,51 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
+//
+// Classe DiceButtonHandler - ActionListener
+//
+// Descrição: Listener do botão de dados. Caso esse botão seja clicado, abre a janela para seleção de dados. Posteriormente causará uma nova jogada de dado.
+//
+// Métodos: actionPerformed
+//
 
 final class DiceButtonHandler implements ActionListener {
+	
+	//
+	// Método actionPerformed
+	//
+	// Descrição: Método acionado quando o botão é clicado, abrindo a janela de seleção de botão, através de UI.DiceSelect().
+	//
+	// Parâmetros: ActionEvent e - Referência à ação realizada sobre o botão de dados.
+	//
+	// Retornos: Sem retorno.
+	//
 	
 	public void actionPerformed(ActionEvent e) {
 		UI.DiceSelect();
 	}
 }
 
+//
+// Classe DicePanel - JPanel
+//
+// Descrição: Painel contendo o botão de dados e responsável pela exibição do dados selecionado.
+//
+// Métodos: DicePanel (Construtor), SetImage
+//
+
 public class DicePanel extends JPanel {
 	JButton dice = new JButton("Jogar Dados");
 	JLabel diceImage = new JLabel();
 	ImageIcon DiceIcon1, DiceIcon2, DiceIcon3, DiceIcon4, DiceIcon5, DiceIcon6;
+	
+	//
+	// Construtor DicePanel
+	//
+	// Descrição: Inicializa o painel de dados, adicionando o botão e carregando as imagens dos dados.
+	//
+	// Parâmetros: Sem parâmetros.
+	//
 	
 	public DicePanel(){
 		super(new GridLayout(2,1));
@@ -33,6 +66,16 @@ public class DicePanel extends JPanel {
 		DiceIcon5 = new ImageIcon("img/Tabuleiros/dado5.JPG");
 		DiceIcon6 = new ImageIcon("img/Tabuleiros/dado6.JPG");
 	}
+	
+	//
+	// Método SetImage
+	//
+	// Descrição: Inicializa a imagem do dado no painel, ou atualiza a imagem no painel com o valor do dado selecionado.
+	//
+	// Parâmetros: int dice - Valor do dado selecionado.
+	//
+	// Retorno: Sem retorno.
+	//
 	
 	public void SetImage(int dice){
 		if(dice == 1){
