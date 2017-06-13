@@ -1,4 +1,5 @@
 package gameui;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -8,23 +9,23 @@ import java.io.*;
 //
 // Classe TratadorNovoJogo
 //
-// DescriÁ„o: Tradador do bot„o NOVO JOGO.
+// Descri√ß√£o: Tradador do bot√£o NOVO JOGO.
 //
-// MÈtodos: actionPerformed
+// M√©todos: actionPerformed
 //
 
 final class TratadorNovoJogo implements ActionListener {
-	
+
 	//
-	// MÈtodo actionPerformed
+	// M√©todo actionPerformed
 	//
-	// DescriÁ„o: Lida com o clique no bot„o NOVO JOGO.
+	// Descri√ß√£o: Lida com o clique no bot√£o NOVO JOGO.
 	//
-	// Par‚metros: ActionEvent e - ReferÍncia ao evento sobre o bot„o.
+	// Par√¢metros: ActionEvent e - Refer√™ncia ao evento sobre o bot√£o.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public void actionPerformed(ActionEvent e) {
 		UI.mainf.dispose();
 		UI.PlayerSet();
@@ -34,38 +35,39 @@ final class TratadorNovoJogo implements ActionListener {
 //
 // Classe TratadorCarregarJogo - ActionListener
 //
-// DescriÁ„o: Tratador do bot„o de carregamento de partida.
+// Descri√ß√£o: Tratador do bot√£o de carregamento de partida.
 //
-// MÈtodos: TratadorCarregarJogo (Construtor), actionPerformed
+// M√©todos: TratadorCarregarJogo (Construtor), actionPerformed
 //
 
 final class TratadorCarregarJogo implements ActionListener {
 	private JFileChooser fc;
 	private Component parent;
-	
+
 	//
 	// Construtor TratadorCarregarJogo
 	//
-	// DescriÁ„o: Abre um file chooser para a seleÁ„o de um arquivo de partida.
+	// Descri√ß√£o: Abre um file chooser para a sele√ß√£o de um arquivo de partida.
 	//
-	// Par‚metros: Component parent - ReferÍncia ao ascendente dessa classe.
+	// Par√¢metros: Component parent - Refer√™ncia ao ascendente dessa classe.
 	//
-	
+
 	public TratadorCarregarJogo(Component parent) {
 		fc = new JFileChooser();
 		this.parent = parent;
 	}
-	
+
 	//
-	// MÈtodo actionPerformed
+	// M√©todo actionPerformed
 	//
-	// DescriÁ„o: Lida com o clique sobre o bot„o de carregamento de jogo.
+	// Descri√ß√£o: Lida com o clique sobre o bot√£o de carregamento de jogo.
 	//
-	// Par‚metro: ActionEvent e - ReferÍncia para o evento sobre o bot„o de carregamento de jogo.
+	// Par√¢metro: ActionEvent e - Refer√™ncia para o evento sobre o bot√£o de
+	// carregamento de jogo.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public void actionPerformed(ActionEvent e) {
 		fc.showOpenDialog(parent);
 	}
@@ -74,81 +76,83 @@ final class TratadorCarregarJogo implements ActionListener {
 //
 // Classe StartPanel - JPanel
 //
-// DescriÁ„o: Painel de inÌcio de jogo. ContÈm os botıes NOVO JOGO e CARREGAR JOGO.
+// Descri√ß√£o: Painel de in√≠cio de jogo. Cont√©m os bot√µes NOVO JOGO e CARREGAR
+// JOGO.
 //
-// MÈtodos: StartPanel (Construtor), paintComponent, IniButtons
+// M√©todos: StartPanel (Construtor), paintComponent, IniButtons
 //
 
 public class StartPanel extends JPanel {
 	int width;
 	int height;
 	Image img;
-	
+
 	//
 	// Construtor StartPanel
 	//
-	// DescriÁ„o: Inicia o painel com sua largura e sua altura, tambÈm carregando a imagem do tÌtulo.
+	// Descri√ß√£o: Inicia o painel com sua largura e sua altura, tamb√©m
+	// carregando a imagem do t√≠tulo.
 	//
-	// Par‚metros: int w - Largura do painel, int h - Altura do painel.
+	// Par√¢metros: int w - Largura do painel, int h - Altura do painel.
 	//
-	
+
 	public StartPanel(int w, int h) {
 		super();
 		this.width = w;
 		this.height = h;
-		
+
 		try {
 			img = ImageIO.read(new File("img/Clue-Logo.png"));
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			System.exit(1);
 		}
 	}
-	
+
 	//
-	// MÈtodo paintComponent
+	// M√©todo paintComponent
 	//
-	// DescriÁ„o: Pinta os componentes do painel, nesse caso o tÌtulo "CLUE".
+	// Descri√ß√£o: Pinta os componentes do painel, nesse caso o t√≠tulo "CLUE".
 	//
-	// Par‚metros: Graphics g - ReferÍncia ao mÛdulo de gr·ficos do Swing.
+	// Par√¢metros: Graphics g - Refer√™ncia ao m√≥dulo de gr√°ficos do Swing.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
-		g.drawImage(img, width/2 - img.getWidth(null)/2, height/2 - img.getHeight(null)/2 - 250, null);
-		
+
+		g.drawImage(img, width / 2 - img.getWidth(null) / 2, height / 2 - img.getHeight(null) / 2 - 250, null);
+
 		g.setFont(new Font("Calibri", Font.PLAIN, 20));
 		g.setColor(Color.BLACK);
-		g.drawString("Inicie um jogo novo ou carrege um antigo!", this.width/2 - 173, this.height/2 - 75);
+		g.drawString("Inicie um jogo novo ou carrege um antigo!", this.width / 2 - 173, this.height / 2 - 75);
 	}
-	
+
 	//
-	// MÈtodo IniButtons
+	// M√©todo IniButtons
 	//
-	// DescriÁ„o: Inicializa os botıes no painel.
+	// Descri√ß√£o: Inicializa os bot√µes no painel.
 	//
-	// Par‚metros: Insets in - Dimensıes do container, int width - Largura do painel, int height - Altura do painel.
+	// Par√¢metros: Insets in - Dimens√µes do container, int width - Largura do
+	// painel, int height - Altura do painel.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public void IniButtons(Insets in, int width, int height) {
 		JButton b1 = new JButton("Novo Jogo");
 		JButton b2 = new JButton("Carregar Jogo");
-		
+
 		b1.addActionListener(new TratadorNovoJogo());
 		b2.addActionListener(new TratadorCarregarJogo(this));
-		
+
 		Dimension size1 = b1.getPreferredSize();
 		Dimension size2 = b2.getPreferredSize();
-		
-		b1.setBounds(in.left + width/2 - size1.width, in.top + height/2 - 30, size1.width * 2, size1.height * 2);
-		b2.setBounds(in.left + width/2 - size2.width, in.top + height/2 + 30, size2.width * 2, size2.height * 2);
-		
+
+		b1.setBounds(in.left + width / 2 - size1.width, in.top + height / 2 - 30, size1.width * 2, size1.height * 2);
+		b2.setBounds(in.left + width / 2 - size2.width, in.top + height / 2 + 30, size2.width * 2, size2.height * 2);
+
 		this.add(b1);
 		this.add(b2);
 	}

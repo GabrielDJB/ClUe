@@ -1,4 +1,5 @@
 package gameui;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -7,29 +8,29 @@ import java.io.*;
 //
 // Classe PlayMenu
 //
-// DescriÁ„o: Painel respons·vel por acusaÁıes e pela chamada por uma prÛxima jogada.
+// Descri√ß√£o: Painel respons√°vel por acusa√ß√µes e pela chamada por uma pr√≥xima jogada.
 //
-// MÈtodos: PlayMenu
+// M√©todos: PlayMenu
 //
 
-public class PlayMenu extends JPanel{
+public class PlayMenu extends JPanel {
 	JButton acuse;
 	JButton next;
-	
+
 	//
 	// Construtor PlayMenu
 	//
-	// DescriÁ„o: Inicializa o painel com os botıes necess·rios.
+	// Descri√ß√£o: Inicializa o painel com os bot√µes necess√°rios.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public PlayMenu(){
-		super(new GridLayout(2,1));
+
+	public PlayMenu() {
+		super(new GridLayout(2, 1));
 		acuse = new JButton("ACUSAR");
-		next = new JButton("PrÛxima Jogada");
+		next = new JButton("Pr√≥xima Jogada");
 		this.add(acuse);
 		this.add(next);
 		this.setBackground(Color.BLUE);

@@ -5,128 +5,152 @@ import java.awt.*;
 //
 // Classe Player - Final
 //
-// DescriÁ„o: Classe representativa dos jogadores na partida.
+// Descri√ß√£o: Classe representativa dos jogadores na partida.
 //
-// Vari·veis: N„o possui vari·veis p˙blicas.
+// Vari√°veis: N√£o possui vari√°veis p√∫blicas.
 //
-// MÈtodos: Player (Construtor), setPosV, setPos, getNome, get PosV, getPos, getColor. 
+// M√©todos: Player (Construtor), setPosV, setPos, getNome, get PosV, getPos, getColor. 
 //
 
 public final class Player {
 	private int posInicial;
-	private int posVertex;
+	private int _loc;
+	private static int arrayLoc = 0;
+	private static int posVertex[] = null;
 	private int posx;
 	private int posy;
 	private String name = new String();
 	private Color color;
-	
+	public boolean isActive = false;
+	public int jogadas = 0;
+
 	//
-	// Constutor Player
+	// Construtor Player
 	//
-	// DescriÁ„o: Construtor que inicializa as vari·veis internas da inst‚ncia.
+	// Descri√ß√£o: Construtor que inicializa as vari√°veis internas da inst√¢ncia.
 	//
-	// Par‚metros: String name - Nome do jogador, int posInicial - PosiÁ„o inicial desse jogador, int px - PosiÁ„o horizontal inicial, int py - PosiÁ„o vertical inicial,
-	//			   Color c - Cor da peÁa do jogador.
+	// Par√¢metros: String name - Nome do jogador, int posInicial - Posi√ß√£o
+	// inicial desse jogador, int px - Posi√ß√£o horizontal inicial, int py -
+	// Posi√ß√£o vertical inicial,
+	// Color c - Cor da pe√ßa do jogador.
 	//
-	
+
 	public Player(String name, int posInicial, int px, int py, Color c) {
+		if (Player.posVertex == null) {
+			Player.posVertex = new int[Control.rodada.nPlayers];
+		}
+
 		this.name = name;
 		this.posInicial = posInicial;
-		this.posVertex = -1; /* N√£o est√° no grafo do tabuleiro */
-		this.color = c;
-		this.posx = px;
-		this.posy = py;
+		_loc = arrayLoc++;
+		Player.posVertex[_loc] = -1;
+		color = c;
+		posx = px;
+		posy = py;
 	}
-	
+
 	//
-	// MÈtodo setPosV
+	// M√©todo setPosV
 	//
-	// DescriÁ„o: Atualiza a posiÁ„o do player em um vÈrtice do grafo.
+	// Descri√ß√£o: Atualiza a posi√ß√£o do player em um v√©rtice do grafo.
 	//
-	// Par‚metro: int pos - PosiÁ„o a ser atualizada.
+	// Par√¢metro: int pos - Posi√ß√£o a ser atualizada.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public void setPosV(int pos) {
-		posVertex = pos;
+		Player.posVertex[_loc] = pos;
 	}
-	
+
 	//
-	// MÈtodo setPos
+	// M√©todo setPos
 	//
-	// DescriÁ„o: Atualiza as posiÁıes horizontais e verticais no mapa.
+	// Descri√ß√£o: Atualiza as posi√ß√µes horizontais e verticais no mapa.
 	//
-	// Par‚metros: int x - Nova posiÁ„o horizontal do personagem, int y - Nova posiÁ„o vertical do personagem.
+	// Par√¢metros: int x - Nova posi√ß√£o horizontal do personagem, int y - Nova
+	// posi√ß√£o vertical do personagem.
 	//
-	// Retorno: N„o retorna nada.
+	// Retorno: N√£o retorna nada.
 	//
-	
-	public void setPos(int x, int y){
+
+	public void setPos(int x, int y) {
 		posx = x;
 		posy = y;
+		jogadas++;
 	}
-	
+
 	//
-	// MÈtodo getNome
+	// M√©todo getNome
 	//
-	// DescriÁ„o: ObtÈm o nome do jogador em quest„o.
+	// Descri√ß√£o: Obt√©m o nome do jogador em quest√£o.
 	//
-	// Par‚metro: N„o recebe par‚metros.
+	// Par√¢metro: N√£o recebe Par√¢metros.
 	//
-	// Retorno: String do nome do jogador em quest„o.
+	// Retorno: String do nome do jogador em quest√£o.
 	//
-	
+
 	public String getNome() {
 		return name;
 	}
-	
+
 	//
-	// MÈtodo getPosV
+	// M√©todo getPosV
 	//
-	// DescriÁ„o: ObtÈm o vÈrtice em que o jogador se localiza.
+	// Descri√ß√£o: Obt√©m o v√©rtice em que o jogador se localiza.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
-	// Retorno: N˙mero do vÈrtice.
+	// Retorno: N√∫mero do v√©rtice.
 	//
-	
+
 	public int getPosV() {
-		if (posVertex == -1) {
-			return posInicial;
+		if (Player.posVertex[_loc] == -1 && jogadas == 0) {
+				return posInicial;
 		}
-		return posVertex;
+		return Player.posVertex[_loc];
 	}
-	
+
 	//
-	// MÈtodo getPos
+	// M√©todo getPos
 	//
-	// DescriÁ„o: Pega as posiÁıes horizontais e verticais do jogador.
+	// Descri√ß√£o: Pega as posi√ß√µes horizontais e verticais do jogador.
 	//
-	// Par‚metro: Sem par‚metros.
+	// Par√¢metro: Sem Par√¢metros.
 	//
 	// Retorno: Vetor de inteiros com as coordenadas, no formato {x,y}
 	//
-	
-	public int[] getPos(){
+
+	public int[] getPos() {
 		int pos[] = new int[2];
 		pos[0] = posx;
 		pos[1] = posy;
 		return pos;
 	}
-	
+
 	//
-	// MÈtodo getColor
+	// M√©todo getColor
 	//
-	// DescriÁ„o: Pega a cor do personagem em quest„o.
+	// Descri√ß√£o: Pega a cor do personagem em quest√£o.
 	//
-	// Par‚metro: N„o recebe par‚metros.
+	// Par√¢metro: N√£o recebe Par√¢metros.
 	//
-	// Retorno: Tipo Color, correspondendo ‡ cor do personagem.
+	// Retorno: Tipo Color, correspondendo √° cor do personagem.
 	//
-	
-	public Color getColor(){
+
+	public Color getColor() {
 		return this.color;
 	}
-	
+
+	public static boolean checkCollision(int v) {
+		int i;
+
+		for (i = 0; i < Player.posVertex.length; i++) {
+			if (Player.posVertex[i] == v)
+				return true;
+		}
+
+		return false;
+	}
+
 }

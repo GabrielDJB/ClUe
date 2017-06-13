@@ -9,23 +9,24 @@ import java.awt.event.ActionListener;
 //
 // Classe AlertOKHandler - Action Listener
 //
-// DescriÁ„o: Listener do bot„o OK nos Alerts.
+// Descri√ß√£o: Listener do bot√£o OK nos Alerts.
 //
-// MÈtodos: actionPerformed
+// M√©todos: actionPerformed
 //
 
 final class AlertOKHandler implements ActionListener {
 
 	//
-	// MÈtodo actionPerformed
+	// M√©todo actionPerformed
 	//
-	// DescriÁ„o: Quando clicado o bot„o OK num alerta, esse listener fecha a janela do alerta.
+	// Descri√ß√£o: Quando clicado o bot√£o OK num alerta, esse listener fecha a
+	// janela do alerta.
 	//
-	// Par‚metros: ActionEvent e - ReferÍncia ao evento sobre o bot„o OK.
+	// Par√¢metros: ActionEvent e - Refer√™ncia ao evento sobre o bot√£o OK.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public void actionPerformed(ActionEvent e) {
 		UI.alert.dispose();
 	}
@@ -34,42 +35,46 @@ final class AlertOKHandler implements ActionListener {
 //
 // Classe UI - Abstrata - Delegadora
 //
-// DescriÁ„o: Representa uma classe que, de acordo com o design pattern de delegaÁ„o, administra os comandos de interface do programa, sendo a camada mais externa de tal mÛdulo.
+// Descri√ß√£o: Representa uma classe que, de acordo com o design pattern de
+// delega√ß√£o, administra os comandos de interface do programa, sendo a camada
+// mais externa de tal m√≥dulo.
 //
-// MÈtodos: IniFrame, PlayerSet, GameStart, DiceSelect, DiceClose, switchDice, cardFrame, Alert, RefreshMap
+// M√©todos: IniFrame, PlayerSet, GameStart, DiceSelect, DiceClose, switchDice,
+// cardFrame, Alert, RefreshMap
 //
 
 public abstract class UI {
 	static MainFrame mainf;
-	static JFrame diceSelect;
 	static JFrame alert;
 	static Toolkit tk = Toolkit.getDefaultToolkit();
 	static Dimension screen = tk.getScreenSize();
+	static DicePanel dado = new DicePanel();
 
 	//
-	// MÈtodo IniFrame
+	// M√©todo IniFrame
 	//
-	// DescriÁ„o: Inicializa o frame inicial do jogo, criando um MainFrame e chamando seu mÈtodo StartMenu().
+	// Descri√ß√£o: Inicializa o frame inicial do jogo, criando um MainFrame e
+	// chamando seu M√©todo StartMenu().
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public static void IniFrame() {
 		Control.InitControl();
-		System.out.println(Control.getMap().evalPath(1, 24, 4));
 		mainf = new MainFrame();
 		mainf.StartMenu();
 		mainf.setVisible(true);
 	}
-	
+
 	//
-	// MÈtodo PlayerSet
+	// M√©todo PlayerSet
 	//
-	// DescriÁ„o: Abre o seletor de personagens, atravÈs do mÈtodo CharSelectMenu do MainFrame.
+	// Descri√ß√£o: Abre o seletor de personagens, atrav√©s do M√©todo
+	// CharSelectMenu do MainFrame.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
@@ -79,13 +84,14 @@ public abstract class UI {
 		mainf.CharSelectMenu();
 		mainf.setVisible(true);
 	}
-	
+
 	//
-	// MÈtodo GameStart
+	// M√©todo GameStart
 	//
-	// DescriÁ„o: Inicializa a interface principal do jogo atravÈs do mÈtodo GameMenu do MainFrame.
+	// Descri√ß√£o: Inicializa a interface principal do jogo atrav√©s do M√©todo
+	// GameMenu do MainFrame.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
@@ -97,82 +103,32 @@ public abstract class UI {
 	}
 
 	//
-	// MÈtodo DiceSelect
+	// M√©todo cardFrame
 	//
-	// DescriÁ„o: Inicia o frame e o painel de seleÁ„o de dado.
+	// Descri√ß√£o: Abre o frame de escolha de cartas.
 	//
-	// Par‚metros: Sem par‚metros.
-	//
-	// Retorno: Sem retorno.
-	//
-	
-	public static void DiceSelect() {
-		int width = 600, height = 450, x = screen.width / 2 - width / 2, y = screen.height / 2 - height / 2;
-		diceSelect = new JFrame();
-		TempDiceSelect diceSelectPane = new TempDiceSelect(diceSelect.getContentPane());
-		diceSelect.setBounds(x, y, width, height);
-		diceSelectPane.DiceButtons();
-		diceSelect.setVisible(true);
-
-	}
-	
-	//
-	// MÈtodo DiceClose
-	//
-	// DescriÁ„o: Fecha a janela de seleÁ„o de dados.
-	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
 
-	public static void DiceClose() {
-		if (diceSelect.isActive()) {
-			diceSelect.dispose();
-		}
-	}
-
-	//
-	// MÈtodo switchDice
-	//
-	// DescriÁ„o: Passa o valor d como novo valor do dado e delega ao mÈtodo ChooseDice do MainFrame para atualiz·-lo.
-	//
-	// Par‚metros: int d - Novo valor do dado.
-	//
-	// Retorno: Sem retorno.
-	//
-	
-	public static void switchDice(int d) {
-		mainf.ChooseDice(d);
-	}
-
-	//
-	// MÈtodo cardFrame
-	//
-	// DescriÁ„o: Abre o frame de escolha de cartas.
-	//
-	// Par‚metros: Sem par‚metros.
-	//
-	// Retorno: Sem retorno.
-	//
-	
 	public static void cardFrame() {
-		JFrame cardf = new JFrame("SeleÁ„o de Cartas");
+		JFrame cardf = new JFrame("Sele√ß√£o de Cartas");
 		CardSelector CardSPanel = new CardSelector(cardf.getContentPane());
 		cardf.setBounds(50, 50, 500, 420);
 		cardf.setVisible(true);
 	}
 
 	//
-	// MÈtodo Alert
+	// M√©todo Alert
 	//
-	// DescriÁ„o: Abre uma janela com um alerta escrito.
+	// Descri√ß√£o: Abre uma janela com um alerta escrito.
 	//
-	// Par‚metros: String s - Mensagem a ser impressa no alerta.
+	// Par√¢metros: String s - Mensagem a ser impressa no alerta.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public static void Alert(String s) {
 		alert = new JFrame();
 		JPanel alertPanel = new JPanel();
@@ -193,18 +149,19 @@ public abstract class UI {
 		msg.setHorizontalAlignment(JLabel.CENTER);
 		alert.setVisible(true);
 	}
-	
+
 	//
-	// MÈtodo RefreshMap
+	// M√©todo RefreshMap
 	//
-	// DescriÁ„o: Delega para o mÈtodo RepaintMap do MainFrame para atualizar a impress„o do mapa.
+	// Descri√ß√£o: Delega para o M√©todo RepaintMap do MainFrame para atualizar a
+	// impress√£o do mapa.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public static void RefreshMap(){
+
+	public static void RefreshMap() {
 		mainf.RepaintMap();
 	}
 }

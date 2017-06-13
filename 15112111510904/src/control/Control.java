@@ -8,123 +8,110 @@ import java.util.List;
 import gameui.UI;
 
 //
-// Classe Control - Abstrata (N„o Instanci·vel)
+// Classe Control - Abstrata (N√£o Instanci√°vel)
 //
-// FuÁ„o: Classe respons·vel pela delegaÁ„o de comandos lÛgicos do jogo.
+// Fun√ßao: Classe respons√°vel pela delega√ß√£o de comandos l√≥gicos do jogo.
 //
-// Visibilidade: VisÌvel por todas as classes no package control.
+// Visibilidade: Vis√≠vel por todas as classes no package control.
 //
-// Vari·veis VisÌveis: mapa, JogoAtivo, rodada, jogadores.
+// Vari√°veis Vis√≠veis: mapa, JogoAtivo, rodada, jogadores.
 //
-// MÈtodos: AddPlayer, getPlayer, getPlayersIt, getMap, printNP
+// M√©todos: AddPlayer, getPlayer, getPlayersIt, getMap, printNP
 //
 
 public abstract class Control {
 	public static Map mapa = Map.GetMapa(); // Mapa do jogo
-	public static boolean JogoAtivo = false; // Determina se o jogo est· rodando
-	public static Round rodada = Round.GetRodada(); // Manager de rodadas do jogo
-	public static List<Player> jogadores = new ArrayList<Player>(); // Lista dos jogadores dessa inst‚ncia do jogo
-	
+	public static boolean JogoAtivo = false; // Determina se o jogo est√° rodando
+	public static Round rodada = Round.GetRodada(); // Manager de rodadas do
+													// jogo
+	// Lista dos jogadores da inst√¢ncia do jogo
+	public static List<Player> jogadores = new ArrayList<Player>();
+
 	//
-	// MÈtodo InitControl - Abstrato
+	// M√©todo InitControl - Abstrato
 	//
-	// DescriÁ„o: Atribui o valor verdadeiro ‡ vari·vel JogoAtivo, indicando que o jogo comeÁou.
+	// Descri√ß√£o: Atribui o valor verdadeiro √† vari√°vel JogoAtivo, indicando que
+	// o jogo come√ßou.
 	//
-	// Sem par‚metros ou retornos.
+	// Sem Par√¢metros ou retornos.
 	//
-	
+
 	public static void InitControl() {
 		JogoAtivo = true;
 	}
-	
+
 	//
-	// MÈtodo AddPlayer - Abstrato
+	// M√©todo AddPlayer - Abstrato
 	//
-	// DescriÁ„o: Adiciona um jogador na lista de jogadores.
+	// Descri√ß√£o: Adiciona um jogador na lista de jogadores.
 	//
-	// Par‚metros: name - Nome do jogador que deve ser adicionado.
+	// Par√¢metros: name - Nome do jogador que deve ser adicionado.
 	//
-	// Retorno: Nada È retornado.
+	// Retorno: Nada √© retornado.
 	//
-	
+
 	public static void AddPlayer(String name) {
-		Player p;
-		
+		Player p = null;
+
 		if (name.compareTo(new String("Pele")) == 0) {
-			p = new Player(name, 0, 370, 75, Color.white);
+			p = new Player(name, 2, 370, 75, Color.white);
 		} else if (name.compareTo(new String("Maradona")) == 0) {
-			p = new Player(name, 0, 525, 75, Color.green);		
+			p = new Player(name, 3 , 525, 75, Color.green);
 		} else if (name.compareTo(new String("Eric Cantona")) == 0) {
-			p = new Player(name, 0, 820, 290, Color.blue);
+			p = new Player(name, 31, 820, 290, Color.blue);
 		} else if (name.compareTo(new String("Zinedine Zidane")) == 0) {
-			p = new Player(name, 0, 820, 745, Color.cyan);
+			p = new Player(name, 158, 820, 745, Color.cyan);
 		} else if (name.compareTo(new String("Ronaldinho Gaucho")) == 0) {
-			p = new Player(name, 0, 305, 930, Color.red);
+			p = new Player(name, 177, 305, 930, Color.red);
 		} else if (name.compareTo(new String("Taffarel")) == 0) {
-			p = new Player(name, 0, 75, 680, Color.yellow);
-		} else {
-			p = new Player(name, 0, 450, 150, Color.yellow);
+			p = new Player(name, 122, 75, 680, Color.yellow);
 		}
-		
+
 		jogadores.add(p);
-		Round.addNumP();
 	}
-	
+
 	//
-	// MÈtodo getPlayer - Abstrato
+	// M√©todo getPlayer - Abstrato
 	//
-	// DescriÁ„o: Pega um jogador especÌfico na lista de jogadores pelo nome do jogador desejado.
+	// Descri√ß√£o: Pega um jogador espec√≠fico na lista de jogadores pelo nome do
+	// jogador desejado.
 	//
-	// Par‚metros: name - Nome do jogador cuja referÍncia dev ser retornada.
+	// Par√¢metros: name - Nome do jogador cuja refer√™ncia deve ser retornada.
 	//
-	// Retorno: ReferÍncia ‡ inst‚ncia do jogador desejado.
+	// Retorno: Refer√™ncia √† inst√¢ncia do jogador desejado.
 	//
-	
-	public static Player getPlayer(String name){
-		for(Player i:jogadores){
-			if(i.getNome().equals(name)){
+
+	public static Player getPlayer(String name) {
+		for (Player i : jogadores) {
+			if (i.getNome().equals(name)) {
 				return i;
 			}
 		}
 		UI.Alert("Erro na busca por jogador!");
 		return null;
 	}
-	
+
 	//
-	// MÈtodo getPlayersIt - Abstrato
+	// M√©todo getMap - Abstrato
 	//
-	// DescriÁ„o: Retorna um iterador na lista de jogadores, afim de possibilitar a varredura da lista.
+	// Descri√ß√£o: Obt√©m acesso ao mapa, atrav√©s de sua refer√™ncia.
 	//
-	// Par‚metros: N„o recebe par‚metros.
+	// Par√¢metros: N√£o possui Par√¢metros.
 	//
-	// Retorno: Retorna um iterador da lista de jogadores.
+	// Retorno: Retorna uma refer√™ncia ao mapa.
 	//
-	
-	public static Iterator<Player> getPlayersIt(){
-		return jogadores.iterator();
-	}
-	
-	//
-	// MÈtodo getMap - Abstrato
-	//
-	// DescriÁ„o: ObtÈm acesso ao mapa, atravÈs de sua referÍncia.
-	//
-	// Par‚metros: N„o possui par‚metros.
-	//
-	// Retorno: Retorna uma referÍncia ao mapa.
-	//
-	
-	public static Map getMap(){
+
+	public static Map getMap() {
 		return mapa;
 	}
-	
+
 	//
-	// MÈtodo printNP - Abstrato
+	// M√©todo printNP - Abstrato
 	//
-	// DescriÁ„o: Imprime no console o n˙mero de jogadores na partida.
+	// Descri√ß√£o: Imprime no console o n√∫mero de jogadores na partida.
 	//
-	
-	public static void printNP(){
+
+	public static void printNP() {
 		System.out.println(Integer.toString(jogadores.size()));
 	}
 

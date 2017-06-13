@@ -1,70 +1,64 @@
 package control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //
 // Classe Round - Singleton
 //
-// Descrição: Classe responsável pela administração de rodadas. Estruturada de acordo com o design pattern de singletons.
+// DescriÃ§Ã£o: Classe responsÃ¡vel pela administraÃ§Ã£o de rodadas. Estruturada de acordo com o design pattern de singletons.
 //
-// Variáveis: Não possui variáveis visíveis.
+// VariÃ¡veis: NÃ£o possui variÃ¡veis visÃ­veis.
 //
-// Métodos: Round (Construtor), GetRodada, addNumP, nextTurn
+// MÃ©todos: Round (Construtor), GetRodada, addNumP, nextTurn
 //
 
 public final class Round {
 	private static Round instance = new Round();
-	private static int turn;
-	private static int nPlayers = 0;
-	
+	public int nPlayers = 0;
+	public int dado = 0;
+
 	//
 	// Construtor Round - Privado (Singleton)
 	//
-	// Descrição: Cria a instância do singleton, iniciando o número de rodadas em zero.
 	//
-	
+
 	private Round() {
-		turn = 0;
-		/* Vazio */
 	}
-	
+
 	//
-	// Método GetRodada
+	// MÃ©todo GetRodada
 	//
-	// Descrição: Retorna uma referência a essa única instância.
+	// DescriÃ§Ã£o: Retorna uma referÃªncia a essa Ãºnica instÃ¢ncia.
 	//
-	// Parâmetros: Sem parâmetros.
+	// ParÃ¢metros: Sem parÃ¢metros.
 	//
-	// Retorno: Referência à rodada.
+	// Retorno: ReferÃªncia Ã  rodada.
 	//
-	
+
 	public static Round GetRodada() {
 		return instance;
 	}
-	
+
 	//
-	// Método addNumP
+	// MÃ©todo addNumP
 	//
-	// Descrição: Incrementa o número de jogadores no jogo.
+	// DescriÃ§Ã£o: Incrementa o nÃºmero de jogadores no jogo.
 	//
-	// Parâmetros: Sem parâmetros.
+	// ParÃ¢metros: Sem parÃ¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public static void addNumP(){
+
+	public void addNumP() {
 		nPlayers = nPlayers + 1;
 	}
-	
-	//
-	// Método nextTurn
-	//
-	// Descrição: Atribui à variável turn o número do jogador que deve jogar na próxima.
-	//
-	// Parâmetros: Sem parâmetros.
-	//
-	// Retorno: Sem retornos.
-	//
-	
-	public static void nextTurn(){
-		turn = (turn + 1) % nPlayers;
+
+	public Player nextTurn() {
+		Player p = Control.jogadores.get(0);
+		Control.jogadores.remove(0);
+		Control.jogadores.add(Control.jogadores.size(), p);
+		dado = 0;
+		return p;
 	}
 }

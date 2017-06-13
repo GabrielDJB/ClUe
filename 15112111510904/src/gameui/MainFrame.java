@@ -1,4 +1,5 @@
 package gameui;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -7,113 +8,112 @@ import java.io.*;
 //
 // Classe MainFrame - JFrame
 //
-// DescriÁ„o: Classe do frame principal do jogo. Sobre ele s„o inseridos os diversos painÈis de jogo.
+// Descri√ß√£o: Classe do frame principal do jogo. Sobre ele s√£o inseridos os diversos pain√©is de jogo.
 //
-// MÈtodos: MainFrame (Construtor), StartMenu, CharSelectMenu, GameMenu, ChooseDice, RepaintMap
+// M√©todos: MainFrame (Construtor), StartMenu, CharSelectMenu, GameMenu, ChooseDice, RepaintMap
 //
 
 public class MainFrame extends JFrame {
-	public final int DEFAULT_WIDTH = 1200; //800;
-	public final int DEFAULT_HEIGHT = 1000;//700;
+	public final int DEFAULT_WIDTH = 1200; // 800;
+	public final int DEFAULT_HEIGHT = 1000;// 700;
 	DicePanel d;
 	MapPanel m;
 	CardPanel c;
 	PlayMenu p;
-	
+
 	//
 	// Construtor MainFrame
 	//
-	// DescriÁ„o: Inicializa o frame principal do jogo com as propriedades default.
+	// Descri√ß√£o: Inicializa o frame principal do jogo com as propriedades
+	// default.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
-	
-	public MainFrame(){		
+
+	public MainFrame() {
 		super("Clue!");
-		
+
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tk.getScreenSize();
 		int width = screenSize.width;
 		int height = screenSize.height;
-		int x = width/2 - DEFAULT_WIDTH/2;
-		int y = height/2 - DEFAULT_HEIGHT/2;
-		
-		setBounds(x,y,DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		int x = width / 2 - DEFAULT_WIDTH / 2;
+		int y = height / 2 - DEFAULT_HEIGHT / 2;
+
+		setBounds(x, y, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(Boolean.FALSE);
-		
+
 		try {
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		}
-		catch (ClassNotFoundException e){
+		} catch (ClassNotFoundException e) {
 			System.out.println("Look and Feel nao encontrado!");
-		}
-		catch (UnsupportedLookAndFeelException e) {
+		} catch (UnsupportedLookAndFeelException e) {
 			System.out.println("Look and Feel nao suportado!");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Erro na criacao do look and feel!");
 		}
 	}
-	
+
 	//
-	// MÈtodo StartMenu
+	// M√©todo StartMenu
 	//
-	// DescriÁ„o: Adiciona ao frame o painel de inicio de jogo.
+	// Descri√ß√£o: Adiciona ao frame o painel de inicio de jogo.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public void StartMenu(){
+
+	public void StartMenu() {
 		StartPanel p = new StartPanel(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		p.IniButtons(p.getInsets(), DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		p.setLayout(null);
 		p.setBackground(Color.WHITE);
-		
+
 		getContentPane().add(p);
 	}
-	
+
 	//
-	// MÈtodo CharSelectMenu
+	// M√©todo CharSelectMenu
 	//
-	// DescriÁ„o: Adiciona o painel de seleÁ„o de personagens ao frame.
+	// Descri√ß√£o: Adiciona o painel de sele√ß√£o de personagens ao frame.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retornos: Sem retornos.
 	//
-	
-	public void CharSelectMenu(){
+
+	public void CharSelectMenu() {
 		CharSelectPanel p = new CharSelectPanel(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		p.IniCharList();
 		p.UserButtons();
 		p.setLayout(null);
-		
+
 		getContentPane().add(p);
 	}
-	
+
 	//
-	// MÈtodo GameMenu
+	// M√©todo GameMenu
 	//
-	// DescriÁ„o: Inicia os painÈis de dado, do mapa, dos dados e das cartas, que compıem a interface principal do jogo.
+	// Descri√ß√£o: Inicia os pain√©is de dado, do mapa, dos dados e das cartas,
+	// que comp√µem a interface principal do jogo.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public void GameMenu(){
+
+	public void GameMenu() {
 		JPanel base = new JPanel(new GridBagLayout());
 		base.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		this.m = new MapPanel(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		this.c = new CardPanel();
 		this.d = new DicePanel();
 		this.p = new PlayMenu();
-		
+
 		getContentPane().add(base);
-		
+
 		GridBagConstraints MapConst = new GridBagConstraints();
 		MapConst.fill = GridBagConstraints.BOTH;
 		MapConst.gridx = 0;
@@ -124,16 +124,16 @@ public class MainFrame extends JFrame {
 		MapConst.weighty = 1;
 
 		base.add(m, MapConst);
-		
+
 		GridBagConstraints CardConst = new GridBagConstraints();
 		CardConst.fill = GridBagConstraints.BOTH;
 		CardConst.gridx = 4;
 		CardConst.gridy = 0;
 		CardConst.weightx = 0.25;
 		CardConst.weighty = 0.25;
-		
+
 		base.add(c, CardConst);
-		
+
 		GridBagConstraints DiceConst = new GridBagConstraints();
 		DiceConst.fill = GridBagConstraints.BOTH;
 		DiceConst.gridx = 4;
@@ -141,45 +141,45 @@ public class MainFrame extends JFrame {
 		DiceConst.gridheight = 2;
 		DiceConst.weightx = 0.25;
 		DiceConst.weighty = 0.25;
-		
+
 		base.add(d, DiceConst);
-		
-		//GridBagConstraints MenuConst = new GridBagConstraints();
-		//MenuConst.fill = GridBagConstraints.BOTH;
-		//MenuConst.gridx = 4;
-		//MenuConst.gridy = 3;
-		//MenuConst.weightx = 0.0;
-		//MenuConst.weighty = 0.10;
-		
-		//base.add(m, MenuConst);
-		
+
+		// GridBagConstraints MenuConst = new GridBagConstraints();
+		// MenuConst.fill = GridBagConstraints.BOTH;
+		// MenuConst.gridx = 4;
+		// MenuConst.gridy = 3;
+		// MenuConst.weightx = 0.0;
+		// MenuConst.weighty = 0.10;
+
+		// base.add(m, MenuConst);
+
 	}
-	
+
 	//
-	// MÈtodo ChooseDice
+	// M√©todo ChooseDice
 	//
-	// DescriÁ„o: Delega a atualizaÁ„o da imagem do dado para o painel de dados.
+	// Descri√ß√£o: Delega a atualiza√ß√£o da imagem do dado para o painel de dados.
 	//
-	// Par‚metros: int value - Novo valor do dado.
+	// Par√¢metros: int value - Novo valor do dado.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public void ChooseDice(int value){
+
+	public void ChooseDice(int value) {
 		d.SetImage(value);
 	}
-	
+
 	//
-	// MÈtodo RepaintMap
+	// M√©todo RepaintMap
 	//
-	// DescriÁ„o: Repinta o mapa, apÛs atualizaÁıes de posiÁ„o dos jogadores.
+	// Descri√ß√£o: Repinta o mapa, ap√≥s atualiza√ß√µes de posi√ß√µes dos jogadores.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public void RepaintMap(){
+
+	public void RepaintMap() {
 		m.repaint();
 	}
 }

@@ -1,22 +1,23 @@
 package main;
+
 import gameui.*;
 
 //
 // Classe Controller - Main
 //
-// DescriÁ„o: Dita o inÌcio do jogo, inicializando a parte gr·fica.
+// Descri√ß√£o: Dita o in√≠cio do jogo, inicializando a parte gr√°fica.
 //
-// MÈtodos: main
+// M√©todos: main
 //
 
 public class Controller {
 
 	//
-	// MÈtodo main
+	// M√©todo main
 	//
-	// DescriÁ„o: AtivaÁ„o do jogo.
+	// Descri√ß√£o: Ativa√ß√£o do jogo.
 	//
-	
+
 	public static void main(String[] args) {
 		UI.IniFrame();
 	}

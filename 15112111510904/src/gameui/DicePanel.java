@@ -1,64 +1,78 @@
 package gameui;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import control.Control;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.Random;
 
 //
 // Classe DiceButtonHandler - ActionListener
 //
-// DescriÁ„o: Listener do bot„o de dados. Caso esse bot„o seja clicado, abre a janela para seleÁ„o de dados. Posteriormente causar· uma nova jogada de dado.
+// Descri√ß√£o: Listener do bot√£o de dados. Caso esse bot√£o seja clicado, abre a janela para sele√ß√£o de dados. Posteriormente causar uma nova jogada de dado.
 //
-// MÈtodos: actionPerformed
+// M√©todos: actionPerformed
 //
 
 final class DiceButtonHandler implements ActionListener {
-	
+
 	//
-	// MÈtodo actionPerformed
+	// M√©todo actionPerformed
 	//
-	// DescriÁ„o: MÈtodo acionado quando o bot„o È clicado, abrindo a janela de seleÁ„o de bot„o, atravÈs de UI.DiceSelect().
+	// Descri√ß√£o: M√©todo acionado quando o bot√£o √© clicado, abrindo a janela de
+	// sele√ß√£o de bot√£o, atrav√©s de UI.DiceSelect().
 	//
-	// Par‚metros: ActionEvent e - ReferÍncia ‡ aÁ„o realizada sobre o bot„o de dados.
+	// Par√¢metros: ActionEvent e - Refer√™ncia √† a√ß√£o realizada sobre o bot√£o de
+	// dados.
 	//
 	// Retornos: Sem retorno.
 	//
-	
+
 	public void actionPerformed(ActionEvent e) {
-		UI.DiceSelect();
+		if (Control.rodada.dado == 0) {
+			Random r = new Random();
+			UI.dado.SetImage(r.nextInt(7));
+		} else {
+			UI.Alert("O jogador " + Control.jogadores.get(0).getNome() + " deve jogar!");
+		}
 	}
 }
 
 //
 // Classe DicePanel - JPanel
 //
-// DescriÁ„o: Painel contendo o bot„o de dados e respons·vel pela exibiÁ„o do dados selecionado.
+// Descri√ß√£o: Painel contendo o bot√£o de dados e respons√°vel pela exibi√ß√£o do
+// dados selecionado.
 //
-// MÈtodos: DicePanel (Construtor), SetImage
+// M√©todos: DicePanel (Construtor), SetImage
 //
 
 public class DicePanel extends JPanel {
 	JButton dice = new JButton("Jogar Dados");
 	JLabel diceImage = new JLabel();
 	ImageIcon DiceIcon1, DiceIcon2, DiceIcon3, DiceIcon4, DiceIcon5, DiceIcon6;
-	
+
 	//
 	// Construtor DicePanel
 	//
-	// DescriÁ„o: Inicializa o painel de dados, adicionando o bot„o e carregando as imagens dos dados.
+	// Descri√ß√£o: Inicializa o painel de dados, adicionando o bot√£o e carregando
+	// as imagens dos dados.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
-	
-	public DicePanel(){
-		super(new GridLayout(2,1));
+
+	public DicePanel() {
+		super(new GridLayout(2, 1));
 		this.add(dice);
 		this.add(diceImage);
 		diceImage.setHorizontalAlignment(JLabel.CENTER);
 		dice.addActionListener(new DiceButtonHandler());
-		
+
 		DiceIcon1 = new ImageIcon("img/Tabuleiros/dado1.JPG");
 		DiceIcon2 = new ImageIcon("img/Tabuleiros/dado2.JPG");
 		DiceIcon3 = new ImageIcon("img/Tabuleiros/dado3.JPG");
@@ -66,19 +80,26 @@ public class DicePanel extends JPanel {
 		DiceIcon5 = new ImageIcon("img/Tabuleiros/dado5.JPG");
 		DiceIcon6 = new ImageIcon("img/Tabuleiros/dado6.JPG");
 	}
-	
+
 	//
-	// MÈtodo SetImage
+	// M√©todo SetImage
 	//
-	// DescriÁ„o: Inicializa a imagem do dado no painel, ou atualiza a imagem no painel com o valor do dado selecionado.
+	// Descri√ß√£o: Inicializa a imagem do dado no painel, ou atualiza a imagem no
+	// painel com o valor do dado selecionado.
 	//
-	// Par‚metros: int dice - Valor do dado selecionado.
+	// Par√¢metros: int dice - Valor do dado selecionado.
 	//
 	// Retorno: Sem retorno.
 	//
-	
-	public void SetImage(int dice){
-		if(dice == 1){
+
+	public void SetImage(int dice) {
+		if (dice == 0)
+			dice++;
+		
+		Control.rodada.dado = dice;
+
+		System.out.println(dice);
+		if (dice == 1) {
 			diceImage.setIcon(DiceIcon1);
 			diceImage.repaint();
 		} else if (dice == 2) {
@@ -97,8 +118,9 @@ public class DicePanel extends JPanel {
 			diceImage.setIcon(DiceIcon6);
 			diceImage.repaint();
 		} else {
-			UI.Alert("Valor Inv·lido no dado!");
+			UI.Alert("Valor Inv√°lido no dado!");
 		}
+
 	}
-	
+
 }

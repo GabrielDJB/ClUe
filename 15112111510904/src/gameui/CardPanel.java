@@ -1,4 +1,5 @@
 package gameui;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -9,23 +10,25 @@ import java.awt.event.ActionListener;
 //
 // Classe CardButtonHandler - Action Listener
 //
-// DescriÁ„o: Action listener que, assim que o bot„o de cartas È acionada, ativa o frame de cartas.
+// Descri√ß√£o: Action listener que, assim que o bot√£o de cartas √© acionada, ativa o frame de cartas.
 //
-// MÈtodos: actionPerformed
+// M√©todos: actionPerformed
 //
 
 final class CardButtonHandler implements ActionListener {
-	
+
 	//
-	// MÈtodo actionPerformed
+	// M√©todo actionPerformed
 	//
-	// DescriÁ„o: MÈtodo acionado automaticamente ao ocorrer de um clique sobre o bot„o de cartas.
+	// Descri√ß√£o: M√©todo acionado automaticamente ao ocorrer de um clique sobre
+	// o bot√£o de cartas.
 	//
-	// Par‚metros: e - Action Event sobre o elemento no qual uma inst‚ncia dessa classe est· registrado.
+	// Par√¢metros: e - Action Event sobre o elemento no qual uma inst√¢ncia dessa
+	// classe est√° registrado.
 	//
 	// Retorno: Sem retorno.
 	//
-	
+
 	public void actionPerformed(ActionEvent e) {
 		UI.cardFrame();
 	}
@@ -34,25 +37,28 @@ final class CardButtonHandler implements ActionListener {
 //
 // Classe CardPanel - JPanel
 //
-// DescriÁ„o: Painel que contÈm o bot„o de cartas da interface.
+// Descri√ß√£o: Painel que cont√©m o bot√£o de cartas da interface.
 //
-// MÈtodos: CardPanel (Construtor)
+// M√©todos: CardPanel (Construtor)
 //
 
 public class CardPanel extends JPanel {
-	int width; int height; int posx;
+	int width;
+	int height;
+	int posx;
 	JButton cards = new JButton("Cartas");
-	
+
 	//
-	// MÈtodo CardPanel
+	// M√©todo CardPanel
 	//
-	// DescriÁ„o: Instancia essa classe, inicializando o JPanel com o bot„o, j· com seu Action Listener.
+	// Descri√ß√£o: Instancia essa classe, inicializando o JPanel com o bot√£o, j√°
+	// com seu Action Listener.
 	//
-	// Par‚metros: Sem par‚metros.
+	// Par√¢metros: Sem Par√¢metros.
 	//
-	
-	public CardPanel(){
-		super(new GridLayout(1,1));
+
+	public CardPanel() {
+		super(new GridLayout(1, 1));
 		this.setBackground(Color.BLACK);
 		cards.addActionListener(new CardButtonHandler());
 		this.add(cards);
