@@ -36,7 +36,8 @@ final class DiceButtonHandler implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (Control.rodada.dado == 0) {
 			Random r = new Random();
-			UI.dado.SetImage(r.nextInt(7));
+			int d = r.nextInt(6) + 1;
+			UI.ChooseDice(d);
 		} else {
 			UI.Alert("O jogador " + Control.jogadores.get(0).getNome() + " deve jogar!");
 		}
@@ -93,30 +94,33 @@ public class DicePanel extends JPanel {
 	//
 
 	public void SetImage(int dice) {
-		if (dice == 0)
-			dice++;
-		
 		Control.rodada.dado = dice;
-
 		System.out.println(dice);
 		if (dice == 1) {
 			diceImage.setIcon(DiceIcon1);
 			diceImage.repaint();
+			diceImage.setVisible(true);
+			System.out.println("Repaint 1");
 		} else if (dice == 2) {
 			diceImage.setIcon(DiceIcon2);
 			diceImage.repaint();
+			System.out.println("Repaint 2");
 		} else if (dice == 3) {
 			diceImage.setIcon(DiceIcon3);
 			diceImage.repaint();
+			System.out.println("Repaint 3");
 		} else if (dice == 4) {
 			diceImage.setIcon(DiceIcon4);
 			diceImage.repaint();
+			System.out.println("Repaint 4");
 		} else if (dice == 5) {
 			diceImage.setIcon(DiceIcon5);
 			diceImage.repaint();
+			System.out.println("Repaint 5");
 		} else if (dice == 6) {
 			diceImage.setIcon(DiceIcon6);
 			diceImage.repaint();
+			System.out.println("Repaint 6");
 		} else {
 			UI.Alert("Valor Inválido no dado!");
 		}

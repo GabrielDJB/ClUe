@@ -180,6 +180,7 @@ public final class Map {
 
 	private Map() {
 		g = new Graph(182);
+		System.out.println("Working Directory = " + System.getProperty("user.dir"));
 		try {
 			g.Generate("map.txt");
 		} catch (Exception e) {

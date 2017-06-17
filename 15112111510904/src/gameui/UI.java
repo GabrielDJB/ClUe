@@ -48,7 +48,6 @@ public abstract class UI {
 	static JFrame alert;
 	static Toolkit tk = Toolkit.getDefaultToolkit();
 	static Dimension screen = tk.getScreenSize();
-	static DicePanel dado = new DicePanel();
 
 	//
 	// Método IniFrame
@@ -148,6 +147,20 @@ public abstract class UI {
 		b.addActionListener(new AlertOKHandler());
 		msg.setHorizontalAlignment(JLabel.CENTER);
 		alert.setVisible(true);
+	}
+	
+	//
+	// Metodo ChooseDice
+	//
+	// Descricao: Recebe o valor do dado e passa para o painel esse valor para redesenhar
+	//
+	// Parametros: d - Valor do dado
+	//
+	// Retornos: Nenhum
+	//
+	
+	public static void ChooseDice(int d){
+		mainf.ChooseDice(d);
 	}
 
 	//
