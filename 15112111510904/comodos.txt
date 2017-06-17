@@ -1,0 +1,27 @@
+cozinha
+93 215
+118 256
+jantar
+96 283
+441 589
+estar
+96 250
+773 892
+musica
+354 543
+151 303
+entrada
+387 515
+740 895
+inverno
+679 792
+130 229
+jogos
+675 797
+381 478
+biblioteca
+654 797
+587 687
+escritorio
+649 797
+823 915

@@ -148,18 +148,19 @@ public abstract class UI {
 		msg.setHorizontalAlignment(JLabel.CENTER);
 		alert.setVisible(true);
 	}
-	
+
 	//
 	// Metodo ChooseDice
 	//
-	// Descricao: Recebe o valor do dado e passa para o painel esse valor para redesenhar
+	// Descricao: Recebe o valor do dado e passa para o painel esse valor para
+	// redesenhar
 	//
 	// Parametros: d - Valor do dado
 	//
 	// Retornos: Nenhum
 	//
-	
-	public static void ChooseDice(int d){
+
+	public static void ChooseDice(int d) {
 		mainf.ChooseDice(d);
 	}
 

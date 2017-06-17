@@ -33,41 +33,52 @@ final class MapHandler implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		Player current = Control.jogadores.get(0);
 		int pos[] = current.getPos();
-		System.out.println(current.isActive);
 		System.out.println(e.getX());
 		System.out.println(e.getY());
 		System.out.println(pos[0]);
 		System.out.println(pos[1]);
 
-		if (Control.rodada.dado == 0) {
+		if (Control.rodada.getDado() == 0) {
 			UI.Alert(Control.jogadores.get(0).getNome() + " -> JOGUE O DADO!");
 		}
 
-		if (current.isActive == false) {
+		if (current.isActive() == false) {
 			int x = e.getX();
 			int y = e.getY();
 
-			if (x >= pos[0] - 5 && x <= pos[0] + 5 && y >= pos[1] - 5 && y <= pos[1] + 5)
-				current.isActive = true;
+			if (x >= pos[0] - 5 && x <= pos[0] + 5 && y >= pos[1] - 5 && y <= pos[1] + 5) {
+				current.setActive(true);
+				UI.RefreshMap();
+			}
 
-		} else if (Control.rodada.dado != 0) {
+		} else if (Control.rodada.getDado() != 0) {
 			int destino = Control.mapa.coordTransform(e.getX(), e.getY());
 			int origem = Control.mapa.coordTransform(pos[0], pos[1]);
 
-			if (Control.jogadores.get(0).jogadas == 0) {
+			if (Control.jogadores.get(0).getNumJogadas() == 0) {
 				/* Jogador está na posição inicial */
 				origem = Control.jogadores.get(0).getPosV();
 			}
-			if (origem == destino && Control.jogadores.get(0).jogadas != 0) {
+			if (origem == destino && Control.jogadores.get(0).getNumJogadas() != 0) {
 				UI.Alert("A peça tem de ser movida!");
-				current.isActive = false;
-			} else if (origem == -1 || destino == -1) {
-				current.isActive = false;
-				return;
-			} else if (Control.mapa.evalPath(origem, destino, Control.rodada.dado)
+				current.setActive(false);
+			} else if (origem == -123 || destino == -123) {
+				current.setActive(false);
+			} else if (origem < 0 && destino < 0) {
+				if (Player.checkCollision(destino) != true) {
+					if (origem == -1 && destino == -9 || origem == -9 && destino == -1) {
+						current.setPos(e.getX(), e.getY());
+					} else if (origem == -3 && destino == -6 || origem == -6 && destino == -3) {
+						current.setPos(e.getX(), e.getY());
+					}
+				}
+					current.setActive(false);
+			} else if (Control.mapa.evalPath(origem, destino, Control.rodada.getDado())
 					&& Player.checkCollision(destino) != true) {
-				current.isActive = false;
+				current.setActive(false);
 				current.setPos(e.getX(), e.getY());
+				current.setPosV(destino);
+				current.addJogada();
 				Control.rodada.nextTurn();
 			}
 			UI.RefreshMap();
@@ -155,9 +166,19 @@ public class MapPanel extends JPanel {
 			int cy = pos[1];
 			Color c = p.getColor();
 			Ellipse2D circ = new Ellipse2D.Double();
+			Ellipse2D interior = new Ellipse2D.Double();
+
 			circ.setFrameFromCenter(cx, cy, cx + r, cy + r);
+			interior.setFrameFromCenter(cx, cy, cx + 12, cy + 12);
 			g2d.setColor(c);
 			g2d.fill(circ);
+			g2d.draw(circ);
+			if (p.isActive()) {
+				System.out.println("DESENHOU!");
+				g2d.setColor(Color.BLACK);
+				g2d.setStroke(new BasicStroke(2.0f));
+				g2d.draw(interior);
+			}
 		}
 	}
 

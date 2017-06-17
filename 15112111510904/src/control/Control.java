@@ -56,7 +56,7 @@ public abstract class Control {
 		if (name.compareTo(new String("Pele")) == 0) {
 			p = new Player(name, 2, 370, 75, Color.white);
 		} else if (name.compareTo(new String("Maradona")) == 0) {
-			p = new Player(name, 3 , 525, 75, Color.green);
+			p = new Player(name, 3, 525, 75, Color.green);
 		} else if (name.compareTo(new String("Eric Cantona")) == 0) {
 			p = new Player(name, 31, 820, 290, Color.blue);
 		} else if (name.compareTo(new String("Zinedine Zidane")) == 0) {

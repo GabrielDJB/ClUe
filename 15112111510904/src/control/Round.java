@@ -15,8 +15,8 @@ import java.util.List;
 
 public final class Round {
 	private static Round instance = new Round();
-	public int nPlayers = 0;
-	public int dado = 0;
+	private int nPlayers = 0;
+	private int dado = 0;
 
 	//
 	// Construtor Round - Privado (Singleton)
@@ -52,6 +52,18 @@ public final class Round {
 
 	public void addNumP() {
 		nPlayers = nPlayers + 1;
+	}
+
+	public int getNumJogadores() {
+		return nPlayers;
+	}
+
+	public int getDado() {
+		return dado;
+	}
+
+	public void setDado(int dice) {
+		dado = dice;
 	}
 
 	public Player nextTurn() {

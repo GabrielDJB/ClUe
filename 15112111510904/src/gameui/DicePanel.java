@@ -34,7 +34,7 @@ final class DiceButtonHandler implements ActionListener {
 	//
 
 	public void actionPerformed(ActionEvent e) {
-		if (Control.rodada.dado == 0) {
+		if (Control.rodada.getDado() == 0) {
 			Random r = new Random();
 			int d = r.nextInt(6) + 1;
 			UI.ChooseDice(d);
@@ -94,8 +94,8 @@ public class DicePanel extends JPanel {
 	//
 
 	public void SetImage(int dice) {
-		Control.rodada.dado = dice;
-		System.out.println(dice);
+		Control.rodada.setDado(dice);
+
 		if (dice == 1) {
 			diceImage.setIcon(DiceIcon1);
 			diceImage.repaint();

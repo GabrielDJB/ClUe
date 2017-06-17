@@ -21,8 +21,8 @@ public final class Player {
 	private int posy;
 	private String name = new String();
 	private Color color;
-	public boolean isActive = false;
-	public int jogadas = 0;
+	private boolean isActive = false;
+	private int jogadas = 0;
 
 	//
 	// Construtor Player
@@ -37,7 +37,7 @@ public final class Player {
 
 	public Player(String name, int posInicial, int px, int py, Color c) {
 		if (Player.posVertex == null) {
-			Player.posVertex = new int[Control.rodada.nPlayers];
+			Player.posVertex = new int[Control.rodada.getNumJogadores()];
 		}
 
 		this.name = name;
@@ -106,7 +106,7 @@ public final class Player {
 
 	public int getPosV() {
 		if (Player.posVertex[_loc] == -1 && jogadas == 0) {
-				return posInicial;
+			return posInicial;
 		}
 		return Player.posVertex[_loc];
 	}
@@ -151,6 +151,22 @@ public final class Player {
 		}
 
 		return false;
+	}
+	
+	public void setActive(boolean v) {
+		isActive = v;
+	}
+	
+	public void addJogada() {
+		jogadas++;
+	}
+	
+	public boolean isActive() {
+		return isActive;
+	}
+	
+	public int getNumJogadas() {
+		return jogadas;
 	}
 
 }
