@@ -2,6 +2,9 @@ package gameui;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import control.Control;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +12,15 @@ import java.io.*;
 
 final class PalpiteOKHandler implements ActionListener{
 	public void actionPerformed(ActionEvent e){
+		int p[] = UI.PalpiteSelection();
+		int ret = UI.Palpite(p);
+		if(ret == 1) {
+			System.out.println("Acertou o palpite!");
+		} else if (ret == 0) {
+			int cp[] = Control.CounterProof(p);
+			UI.PrintCP(cp);
+			System.out.println("Errou palpite!");
+		}
 		UI.ClosePalpiteFrame();
 	}
 }
@@ -160,5 +172,35 @@ public class PalpiteFrame extends JFrame {
 	public void Show() {
 		c.add(panel);
 		panel.setVisible(true);
+	}
+	
+	public int[] GetSelection(){
+		
+		int vet[] = {0,0,0}; int i = 0;
+		
+		for(JRadioButton j1 : armas){
+			if(j1.isSelected()){
+				vet[0] = i;
+				break;
+			}
+			i++;
+		}
+		i = 0;
+		for(JRadioButton j2 : suspeitos){
+			if(j2.isSelected()){
+				vet[1] = i;
+				break;
+			}
+			i++;
+		}
+		i = 0;
+		for(JRadioButton j3 : locais){
+			if(j3.isSelected()){
+				vet[2] = i;
+				break;
+			}
+			i++;
+		}
+		return vet;
 	}
 }

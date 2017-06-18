@@ -31,6 +31,10 @@ public abstract class Control {
 	public static int GameSuspeito;
 	public static int GameComodo;
 	
+	//private int GunSelect[] = {1,1,1,1,1,1};
+	//private int SuspectSelect[] = {1,1,1,1,1,1};		
+	//private int LocalSelect[] = {1,1,1,1,1,1,1,1,1};
+	
 	// Lista dos jogadores da instância do jogo
 	public static List<Player> jogadores = new ArrayList<Player>();
 
@@ -129,14 +133,42 @@ public abstract class Control {
 		System.out.println(Integer.toString(jogadores.size()));
 	}
 
-	public static int CheckPalpite(int arma, int suspeito, int comodo){
-		//int arma_final = rodada.getGameGun();
-		//int suspeito_final = rodada.getGameSuspect();
-		//int comodo_final = rodada.getGameComodo();
-		//if(arma_final == arma && suspeito_final == suspeito && comodo_final == comodo){
-		//	return 1;
-		//}
+	public static int CheckCards(int arma, int suspeito, int comodo){
+		if(GameArma == arma && GameSuspeito == suspeito && GameComodo == comodo){
+			return 1;
+		}
 		return 0;
 	}
 	
+	public static int[] CounterProof(int vet[]){
+		Random r = new Random(); int cat = r.nextInt(3);
+		int ret[] = {0,0};
+		if(cat == 0){
+			int arma = r.nextInt(6);
+			while(arma == GameArma){
+				arma = r.nextInt(6);
+			}
+			ret[0] = 0; //Tipo arma
+			ret[1] = arma;
+			return ret;
+			
+		} else if (cat == 1){
+			int suspeito = r.nextInt(6);
+			while(suspeito == GameSuspeito){
+				suspeito = r.nextInt(6);
+			}
+			ret[0] = 1; //Tipo suspeito
+			ret[1] = suspeito;
+			return ret;
+		
+		} else {
+			int comodo = r.nextInt(9);
+			while(comodo == GameComodo){
+				comodo = r.nextInt(9);
+			}
+			ret[0] = 2; //Tipo comodo
+			ret[1] = comodo;
+			return ret;
+		}
+	}
 }

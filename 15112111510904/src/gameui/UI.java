@@ -206,4 +206,79 @@ public abstract class UI {
 	public static void ClosePalpiteFrame(){
 		palpite.dispose();
 	}
+	
+	public static int[] PalpiteSelection(){
+		return palpite.GetSelection();
+	}
+	
+	public static int Palpite(int p[]){
+		int ret = 0;
+		ret = Control.CheckCards(p[0], p[1], p[2]);
+		return ret;
+	}
+		
+	public static int[] AcusaSelection(){
+		return acusa.GetSelection();
+	}
+	
+	public static int Acusa(int p[]){
+		int ret = 0;
+		ret = Control.CheckCards(p[0], p[1], p[2]);
+		return ret;
+	}
+	
+	public static void PrintCP(int cp[]){
+		
+		if(cp[0] == 0){
+			if(cp[1] == 0)
+				System.out.println("Cano");
+			else if(cp[1] == 1)
+				System.out.println("Castical");
+			else if(cp[1] == 2)
+				System.out.println("Chave Inglesa");
+			else if(cp[1] == 3)
+				System.out.println("Corda");
+			else if(cp[1] == 4)
+				System.out.println("Faca");
+			else
+				System.out.println("Revolver");
+		}
+		
+		if(cp[0] == 1){
+			if(cp[1] == 0)
+				System.out.println("Green");
+			else if(cp[1] == 1)
+				System.out.println("Mustard");
+			else if(cp[1] == 2)
+				System.out.println("Peacock");
+			else if(cp[1] == 3)
+				System.out.println("Plum");
+			else if(cp[1] == 4)
+				System.out.println("Scarlet");
+			else
+				System.out.println("White");
+		}
+		
+		if(cp[0] == 2){
+			if(cp[1] == 0)
+				System.out.println("Biblioteca");
+			else if(cp[1] == 1)
+				System.out.println("Cozinha");
+			else if(cp[1] == 2)
+				System.out.println("Entrada");
+			else if(cp[1] == 3)
+				System.out.println("Escritorio");
+			else if(cp[1] == 4)
+				System.out.println("Jardim de Inverno");
+			else if(cp[1] == 5)
+				System.out.println("Sala de Estar");
+			else if(cp[1] == 6)
+				System.out.println("Sala de Jantar");
+			else if(cp[1] == 7)
+				System.out.println("Sala de Musica");
+			else if(cp[1] == 8)
+				System.out.println("Sala de Jogos");
+		}
+	}
+
 }
