@@ -48,6 +48,8 @@ public abstract class UI {
 	static JFrame alert;
 	static Toolkit tk = Toolkit.getDefaultToolkit();
 	static Dimension screen = tk.getScreenSize();
+	static AcusaFrame acusa;
+	static PalpiteFrame palpite;
 
 	//
 	// Método IniFrame
@@ -180,20 +182,28 @@ public abstract class UI {
 	}
 
 	public static void PalpiteFrame() {
-		PalpiteFrame p = new PalpiteFrame();
-		p.SuspectList();
-		p.GunList();
-		p.LocaleList();
-		p.Show();
-		p.setVisible(true);
+		palpite = new PalpiteFrame();
+		palpite.SuspectList();
+		palpite.GunList();
+		palpite.LocaleList();
+		palpite.Show();
+		palpite.setVisible(true);
 	}
 
 	public static void AcusaFrame() {
-		AcusaFrame a = new AcusaFrame();
-		a.SuspectList();
-		a.GunList();
-		a.LocaleList();
-		a.Show();
-		a.setVisible(true);
+		acusa = new AcusaFrame();
+		acusa.SuspectList();
+		acusa.GunList();
+		acusa.LocaleList();
+		acusa.Show();
+		acusa.setVisible(true);
+	}
+	
+	public static void CloseAcusaFrame(){
+		acusa.dispose();
+	}
+	
+	public static void ClosePalpiteFrame(){
+		palpite.dispose();
 	}
 }

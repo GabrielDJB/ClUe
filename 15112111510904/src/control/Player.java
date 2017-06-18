@@ -23,6 +23,9 @@ public final class Player {
 	private Color color;
 	private boolean isActive = false;
 	private int jogadas = 0;
+	private int armas[] = {0,0,0,0,0,0};
+	private int suspeitos[] = {0,0,0,0,0,0};
+	private int locais[] = {0,0,0,0,0,0,0,0,0};
 
 	//
 	// Construtor Player
@@ -167,6 +170,57 @@ public final class Player {
 
 	public int getNumJogadas() {
 		return jogadas;
+	}
+	
+	public void addArmaCard(int card){
+		if(card >= 1 && card <= 7){
+			armas[card - 1] = 1;
+		}
+	}
+	
+	public void addSuspeitoCard(int card){
+		if(card >= 1 && card <= 7){
+			suspeitos[card-1] = 1;
+		}
+	}
+	
+	public void addComodoCard(int card){
+		if(card >= 1 && card <= 10){
+			locais[card-1] = 1;
+		}
+	}
+	
+	public int HasArma(int card){
+		if(card < 1 || card > 7){
+			return -1;
+		}
+		if(armas[card-1] == 1){
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+	public int HasSuspeito(int card){
+		if(card < 1 || card > 7){
+			return -1;
+		}
+		if(suspeitos[card-1] == 1){
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+	public int HasComodo(int card){
+		if(card < 1 || card > 10){
+			return -1;
+		}
+		if(locais[card-1] == 1){
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }

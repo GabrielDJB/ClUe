@@ -3,7 +3,15 @@ package gameui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
+
+final class AcusaOKHandler implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+		UI.CloseAcusaFrame();
+	}
+}
 
 public class AcusaFrame extends JFrame {
 	ButtonGroup s, a, l;
@@ -27,6 +35,7 @@ public class AcusaFrame extends JFrame {
 		this.setBounds(100, 100, 480, 490);
 		this.setResizable(false);
 		b.setBounds(220, 360, 200, 50);
+		b.addActionListener(new AcusaOKHandler());
 
 		panel.add(b);
 	}

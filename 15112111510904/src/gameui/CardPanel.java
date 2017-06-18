@@ -47,6 +47,7 @@ public class CardPanel extends JPanel {
 	int height;
 	int posx;
 	JButton cards = new JButton("Cartas");
+	JButton save = new JButton("Salvar Jogo");
 
 	//
 	// Método CardPanel
@@ -58,9 +59,10 @@ public class CardPanel extends JPanel {
 	//
 
 	public CardPanel() {
-		super(new GridLayout(1, 1));
+		super(new GridLayout(2, 1));
 		this.setBackground(Color.BLACK);
 		cards.addActionListener(new CardButtonHandler());
+		this.add(save);
 		this.add(cards);
 	}
 }

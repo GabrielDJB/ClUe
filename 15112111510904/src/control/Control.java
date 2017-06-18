@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
+import control.*;
 import gameui.UI;
 
 //
@@ -22,8 +24,13 @@ import gameui.UI;
 public abstract class Control {
 	public static Map mapa = Map.GetMapa(); // Mapa do jogo
 	public static boolean JogoAtivo = false; // Determina se o jogo está rodando
-	public static Round rodada = Round.GetRodada(); // Manager de rodadas do
-													// jogo
+	public static Round rodada = Round.GetRodada(); // Manager de rodadas do jogo
+	
+	private static Random r = new Random();
+	public static int GameArma;
+	public static int GameSuspeito;
+	public static int GameComodo;
+	
 	// Lista dos jogadores da instância do jogo
 	public static List<Player> jogadores = new ArrayList<Player>();
 
@@ -38,6 +45,13 @@ public abstract class Control {
 
 	public static void InitControl() {
 		JogoAtivo = true;
+		GameArma = r.nextInt(6);
+		GameSuspeito = r.nextInt(6);
+		GameComodo = r.nextInt(9);
+		System.out.println(Integer.toString(GameArma));
+		System.out.println(Integer.toString(GameSuspeito));
+		System.out.println(Integer.toString(GameComodo));
+		
 	}
 
 	//
@@ -115,4 +129,14 @@ public abstract class Control {
 		System.out.println(Integer.toString(jogadores.size()));
 	}
 
+	public static int CheckPalpite(int arma, int suspeito, int comodo){
+		//int arma_final = rodada.getGameGun();
+		//int suspeito_final = rodada.getGameSuspect();
+		//int comodo_final = rodada.getGameComodo();
+		//if(arma_final == arma && suspeito_final == suspeito && comodo_final == comodo){
+		//	return 1;
+		//}
+		return 0;
+	}
+	
 }
