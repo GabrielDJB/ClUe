@@ -140,34 +140,22 @@ public abstract class Control {
 		return 0;
 	}
 	
+	//Nao vai ser randomico, vai checar arma primeiro, suspeito depois e comodo por ultimo.
 	public static int[] CounterProof(int vet[]){
-		Random r = new Random(); int cat = r.nextInt(3);
 		int ret[] = {0,0};
-		if(cat == 0){
-			int arma = r.nextInt(6);
-			while(arma == GameArma){
-				arma = r.nextInt(6);
-			}
+		if(vet[0] != GameArma){
 			ret[0] = 0; //Tipo arma
-			ret[1] = arma;
+			ret[1] = vet[0];
 			return ret;
 			
-		} else if (cat == 1){
-			int suspeito = r.nextInt(6);
-			while(suspeito == GameSuspeito){
-				suspeito = r.nextInt(6);
-			}
+		} else if (vet[1] != GameSuspeito){
 			ret[0] = 1; //Tipo suspeito
-			ret[1] = suspeito;
+			ret[1] = vet[1];
 			return ret;
 		
 		} else {
-			int comodo = r.nextInt(9);
-			while(comodo == GameComodo){
-				comodo = r.nextInt(9);
-			}
-			ret[0] = 2; //Tipo comodo
-			ret[1] = comodo;
+			ret[0] = 2;
+			ret[1] = vet[2];
 			return ret;
 		}
 	}

@@ -231,53 +231,53 @@ public abstract class UI {
 		
 		if(cp[0] == 0){
 			if(cp[1] == 0)
-				System.out.println("Cano");
+				UI.Alert("Cano");
 			else if(cp[1] == 1)
-				System.out.println("Castical");
+				UI.Alert("Castical");
 			else if(cp[1] == 2)
-				System.out.println("Chave Inglesa");
+				UI.Alert("Chave Inglesa");
 			else if(cp[1] == 3)
-				System.out.println("Corda");
+				UI.Alert("Corda");
 			else if(cp[1] == 4)
-				System.out.println("Faca");
+				UI.Alert("Faca");
 			else
-				System.out.println("Revolver");
+				UI.Alert("Revolver");
 		}
 		
 		if(cp[0] == 1){
 			if(cp[1] == 0)
-				System.out.println("Green");
+				UI.Alert("Green");
 			else if(cp[1] == 1)
-				System.out.println("Mustard");
+				UI.Alert("Mustard");
 			else if(cp[1] == 2)
-				System.out.println("Peacock");
+				UI.Alert("Peacock");
 			else if(cp[1] == 3)
-				System.out.println("Plum");
+				UI.Alert("Plum");
 			else if(cp[1] == 4)
-				System.out.println("Scarlet");
+				UI.Alert("Scarlet");
 			else
-				System.out.println("White");
+				UI.Alert("White");
 		}
 		
 		if(cp[0] == 2){
 			if(cp[1] == 0)
-				System.out.println("Biblioteca");
+				UI.Alert("Biblioteca");
 			else if(cp[1] == 1)
-				System.out.println("Cozinha");
+				UI.Alert("Cozinha");
 			else if(cp[1] == 2)
-				System.out.println("Entrada");
+				UI.Alert("Entrada");
 			else if(cp[1] == 3)
-				System.out.println("Escritorio");
+				UI.Alert("Escritorio");
 			else if(cp[1] == 4)
-				System.out.println("Jardim de Inverno");
+				UI.Alert("Jardim de Inverno");
 			else if(cp[1] == 5)
-				System.out.println("Sala de Estar");
+				UI.Alert("Sala de Estar");
 			else if(cp[1] == 6)
-				System.out.println("Sala de Jantar");
+				UI.Alert("Sala de Jantar");
 			else if(cp[1] == 7)
-				System.out.println("Sala de Musica");
+				UI.Alert("Sala de Musica");
 			else if(cp[1] == 8)
-				System.out.println("Sala de Jogos");
+				UI.Alert("Sala de Jogos");
 		}
 	}
 
