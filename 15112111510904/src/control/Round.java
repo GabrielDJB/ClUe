@@ -73,4 +73,9 @@ public final class Round {
 		dado = 0;
 		return p;
 	}
+	
+	public Player getCurrP(){
+		Player p = Control.jogadores.get(0);
+		return p;
+	}
 }

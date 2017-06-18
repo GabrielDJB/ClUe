@@ -171,4 +171,13 @@ public abstract class Control {
 			return ret;
 		}
 	}
+	
+	public static Player GetCurrP(){
+		return rodada.getCurrP();
+	}
+	
+	public static void AddCardCurr(int type, int card){
+		Player p = rodada.getCurrP();
+		p.addCard(type, card);
+	}
 }

@@ -1,6 +1,10 @@
 package gameui;
 
 import javax.swing.*;
+
+import control.Control;
+import control.Player;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +24,7 @@ public class CardSelector extends JPanel {
 	JCheckBox comodos[] = new JCheckBox[9];
 	JCheckBox suspeitos[] = new JCheckBox[6];
 	JLabel armasl, comodosl, suspeitosl;
+	Player p;
 
 	//
 	// Método CardSelector - Construtor
@@ -36,6 +41,8 @@ public class CardSelector extends JPanel {
 
 		// Initializing variables
 
+		p = Control.GetCurrP();
+		
 		armasl = new JLabel("Armas");
 		comodosl = new JLabel("Comodos");
 		suspeitosl = new JLabel("Suspeitos");
@@ -123,7 +130,33 @@ public class CardSelector extends JPanel {
 		this.add(comodos[8]);
 
 		// Adding to the content pane
+		this.IniInventory(p);
+		
 		this.setVisible(true);
 		c.add(this);
+	}
+	
+	private void IniInventory(Player p){
+		int i = 0;
+		for(JCheckBox j1 : armas){
+			if(p.hasCard(0, i) == 1){
+				j1.setSelected(true);
+			}
+			i++;
+		}
+		i = 0;
+		for(JCheckBox j2 : suspeitos){
+			if(p.hasCard(1, i) == 1){
+				j2.setSelected(true);
+			}
+			i++;
+		}
+		i = 0;
+		for(JCheckBox j3 : comodos){
+			if(p.hasCard(2, i) == 1){
+				j3.setSelected(true);
+			}
+			i++;
+		}
 	}
 }

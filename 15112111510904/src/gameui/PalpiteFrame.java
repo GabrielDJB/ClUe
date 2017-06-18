@@ -18,6 +18,7 @@ final class PalpiteOKHandler implements ActionListener{
 			System.out.println("Acertou o palpite!");
 		} else if (ret == 0) {
 			int cp[] = Control.CounterProof(p);
+			Control.AddCardCurr(cp[0], cp[1]);
 			UI.PrintCP(cp);
 			System.out.println("Errou palpite!");
 		}
