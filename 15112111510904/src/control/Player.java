@@ -25,7 +25,7 @@ public final class Player {
 	private int jogadas = 0;
 	private int armas[] = {0,0,0,0,0,0};
 	private int suspeitos[] = {0,0,0,0,0,0};
-	private int locais[] = {0,0,0,0,0,0,0,0,0};
+	private int comodos[] = {0,0,0,0,0,0,0,0,0};
 
 	//
 	// Construtor Player
@@ -172,54 +172,48 @@ public final class Player {
 		return jogadas;
 	}
 	
-	public void addArmaCard(int card){
-		if(card >= 1 && card <= 7){
-			armas[card - 1] = 1;
-		}
-	}
-	
-	public void addSuspeitoCard(int card){
-		if(card >= 1 && card <= 7){
-			suspeitos[card-1] = 1;
-		}
-	}
-	
-	public void addComodoCard(int card){
-		if(card >= 1 && card <= 10){
-			locais[card-1] = 1;
-		}
-	}
-	
-	public int HasArma(int card){
-		if(card < 1 || card > 7){
+	// tipo 0 = armas; tipo 1 = suspeitos; tipo 2 = comodos
+	public int addCard(int type, int card){
+		if((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5)) || (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2){
 			return -1;
-		}
-		if(armas[card-1] == 1){
-			return 1;
 		} else {
-			return 0;
+			if(type == 0) {
+				armas[card] = 1;
+				return 1;
+			} else if (type == 1) {
+				suspeitos[card] = 1;
+				return 1;
+			} else {
+				comodos[card] = 1;
+				return 1;
+			}
 		}
 	}
 	
-	public int HasSuspeito(int card){
-		if(card < 1 || card > 7){
+	// tipo 0 = armas; tipo 1 = suspeitos; tipo 2 = comodos
+	public int hasCard(int type, int card){
+		if((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5)) || (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2){
 			return -1;
-		}
-		if(suspeitos[card-1] == 1){
-			return 1;
 		} else {
-			return 0;
-		}
-	}
-	
-	public int HasComodo(int card){
-		if(card < 1 || card > 10){
-			return -1;
-		}
-		if(locais[card-1] == 1){
-			return 1;
-		} else {
-			return 0;
+			if(type == 0) {
+				if(armas[card] == 1){
+					return 1;
+				} else {
+					return 0;
+				}
+			} else if (type == 1) {
+				if(suspeitos[card] == 1){
+					return 1;
+				} else {
+					return 0;
+				}
+			} else {
+				if(comodos[card] == 1){
+					return 1;
+				} else {
+					return 0;
+				}
+			}
 		}
 	}
 
