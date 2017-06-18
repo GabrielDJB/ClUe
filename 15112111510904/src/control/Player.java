@@ -152,19 +152,19 @@ public final class Player {
 
 		return false;
 	}
-	
+
 	public void setActive(boolean v) {
 		isActive = v;
 	}
-	
+
 	public void addJogada() {
 		jogadas++;
 	}
-	
+
 	public boolean isActive() {
 		return isActive;
 	}
-	
+
 	public int getNumJogadas() {
 		return jogadas;
 	}

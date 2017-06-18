@@ -171,7 +171,7 @@ final class Graph {
 
 final class Comodos {
 	Point pontos[] = new Point[9];
-	
+
 	public Comodos(String filename) {
 		File __f = new File(filename);
 		Scanner f = null;
@@ -191,17 +191,17 @@ final class Comodos {
 			System.exit(-1);
 		}
 	}
-	
+
 	public int isInside(int x, int y) {
 		int i;
 
 		for (i = 0; i < 9; i++) {
 			if (pontos[i].isInside(x, y))
-				return -(i+1);
+				return -(i + 1);
 		}
 		return 0;
 	}
-	
+
 }
 
 /* Singleton */
@@ -246,7 +246,7 @@ public final class Map {
 				return true;
 			if (origem == 163 && destino == -9)
 				return true;
-		} else if ( origem < 0 ) {
+		} else if (origem < 0) {
 			if (origem == -1 && destino == 36)
 				return true;
 			if (origem == -2 && destino == 116)
@@ -276,10 +276,10 @@ public final class Map {
 	/* Retorna vértice correspondente a x,y */
 	public int coordTransform(int x, int y) {
 		int ret = c.isInside(x, y);
-		
+
 		if (ret < 0)
 			return ret;
-		
+
 		if (x < 59 || x > 810)
 			return -123;
 

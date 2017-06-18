@@ -144,14 +144,14 @@ public class MainFrame extends JFrame {
 
 		base.add(d, DiceConst);
 
-		// GridBagConstraints MenuConst = new GridBagConstraints();
-		// MenuConst.fill = GridBagConstraints.BOTH;
-		// MenuConst.gridx = 4;
-		// MenuConst.gridy = 3;
-		// MenuConst.weightx = 0.0;
-		// MenuConst.weighty = 0.10;
+		GridBagConstraints MenuConst = new GridBagConstraints();
+		MenuConst.fill = GridBagConstraints.BOTH;
+		MenuConst.gridx = 4;
+		MenuConst.gridy = 3;
+		MenuConst.weightx = 0.10;
+		MenuConst.weighty = 0.10;
 
-		// base.add(m, MenuConst);
+		base.add(p, MenuConst);
 
 	}
 

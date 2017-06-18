@@ -178,4 +178,22 @@ public abstract class UI {
 	public static void RefreshMap() {
 		mainf.RepaintMap();
 	}
+
+	public static void PalpiteFrame() {
+		PalpiteFrame p = new PalpiteFrame();
+		p.SuspectList();
+		p.GunList();
+		p.LocaleList();
+		p.Show();
+		p.setVisible(true);
+	}
+
+	public static void AcusaFrame() {
+		AcusaFrame a = new AcusaFrame();
+		a.SuspectList();
+		a.GunList();
+		a.LocaleList();
+		a.Show();
+		a.setVisible(true);
+	}
 }

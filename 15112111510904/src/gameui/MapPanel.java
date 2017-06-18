@@ -72,14 +72,13 @@ final class MapHandler implements MouseListener {
 						current.setPos(e.getX(), e.getY());
 					}
 				}
-					current.setActive(false);
+				current.setActive(false);
 			} else if (Control.mapa.evalPath(origem, destino, Control.rodada.getDado())
 					&& Player.checkCollision(destino) != true) {
 				current.setActive(false);
 				current.setPos(e.getX(), e.getY());
 				current.setPosV(destino);
 				current.addJogada();
-				Control.rodada.nextTurn();
 			}
 			UI.RefreshMap();
 		}
