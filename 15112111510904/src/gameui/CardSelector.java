@@ -6,8 +6,6 @@ import control.Control;
 import control.Player;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 //
 // Classe CardSelector - JPanel
@@ -42,7 +40,7 @@ public class CardSelector extends JPanel {
 		// Initializing variables
 
 		p = Control.GetCurrP();
-		
+
 		armasl = new JLabel("Armas");
 		comodosl = new JLabel("Comodos");
 		suspeitosl = new JLabel("Suspeitos");
@@ -131,32 +129,39 @@ public class CardSelector extends JPanel {
 
 		// Adding to the content pane
 		this.IniInventory(p);
-		
+
 		this.setVisible(true);
 		c.add(this);
 	}
-	
-	private void IniInventory(Player p){
+
+	private void IniInventory(Player p) {
 		int i = 0;
-		for(JCheckBox j1 : armas){
-			if(p.hasCard(0, i) == 1){
+		
+		for (JCheckBox j1 : armas) {
+			if (p.hasCard(0, i) == 1) {
 				j1.setSelected(true);
 			}
 			i++;
 		}
+		
 		i = 0;
-		for(JCheckBox j2 : suspeitos){
-			if(p.hasCard(1, i) == 1){
+		
+		for (JCheckBox j2 : suspeitos) {
+			if (p.hasCard(1, i) == 1) {
 				j2.setSelected(true);
 			}
 			i++;
 		}
+		
 		i = 0;
-		for(JCheckBox j3 : comodos){
-			if(p.hasCard(2, i) == 1){
+		
+		for (JCheckBox j3 : comodos) {
+			if (p.hasCard(2, i) == 1) {
 				j3.setSelected(true);
 			}
 			i++;
 		}
+		
 	}
+	
 }

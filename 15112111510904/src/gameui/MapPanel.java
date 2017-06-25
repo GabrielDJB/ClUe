@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 import java.io.*;
-import java.util.*;
 
 //
 // Classe MapHandler - MouseListener
@@ -31,7 +30,7 @@ final class MapHandler implements MouseListener {
 	//
 
 	public void mouseClicked(MouseEvent e) {
-		Player current = Control.jogadores.get(0);
+		Player current = Control.GetCurrP();
 		int pos[] = current.getPos();
 		System.out.println(e.getX());
 		System.out.println(e.getY());
@@ -55,16 +54,17 @@ final class MapHandler implements MouseListener {
 			int destino = Control.mapa.coordTransform(e.getX(), e.getY());
 			int origem = Control.mapa.coordTransform(pos[0], pos[1]);
 
-			if (Control.jogadores.get(0).getNumJogadas() == 0) {
+			if (current.getNumJogadas() == 0) {
 				/* Jogador está na posição inicial */
-				origem = Control.jogadores.get(0).getPosV();
+				origem = current.getPosV();
 			}
-			if (origem == destino && Control.jogadores.get(0).getNumJogadas() != 0) {
+			if (origem == destino && current.getNumJogadas() != 0) {
 				UI.Alert("A peça tem de ser movida!");
 				current.setActive(false);
 			} else if (origem == -123 || destino == -123) {
 				current.setActive(false);
 			} else if (origem < 0 && destino < 0) {
+				
 				if (Player.checkCollision(destino) != true) {
 					if (origem == -1 && destino == -9 || origem == -9 && destino == -1) {
 						current.setPos(e.getX(), e.getY());
@@ -72,6 +72,7 @@ final class MapHandler implements MouseListener {
 						current.setPos(e.getX(), e.getY());
 					}
 				}
+				
 				current.setActive(false);
 			} else if (Control.mapa.evalPath(origem, destino, Control.rodada.getDado())
 					&& Player.checkCollision(destino) != true) {
@@ -80,8 +81,10 @@ final class MapHandler implements MouseListener {
 				current.setPosV(destino);
 				current.addJogada();
 			}
+			
 			UI.RefreshMap();
 		}
+		
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -133,6 +136,7 @@ public class MapPanel extends JPanel {
 			System.out.println(e.getMessage());
 			System.exit(-1);
 		}
+		
 		this.addMouseListener(new MapHandler());
 	}
 
@@ -156,10 +160,8 @@ public class MapPanel extends JPanel {
 		int r = 15;
 		Graphics2D g2d = (Graphics2D) g;
 
-		Iterator<Player> players = Control.jogadores.iterator();
-
-		while (players.hasNext()) {
-			Player p = players.next();
+		
+		for (Player p : Control.jogadores) {
 			int pos[] = p.getPos();
 			int cx = pos[0];
 			int cy = pos[1];
@@ -172,13 +174,15 @@ public class MapPanel extends JPanel {
 			g2d.setColor(c);
 			g2d.fill(circ);
 			g2d.draw(circ);
+		
 			if (p.isActive()) {
-				System.out.println("DESENHOU!");
 				g2d.setColor(Color.BLACK);
 				g2d.setStroke(new BasicStroke(2.0f));
 				g2d.draw(interior);
 			}
+			
 		}
+		
 	}
 
 }

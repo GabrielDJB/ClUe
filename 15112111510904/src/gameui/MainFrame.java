@@ -1,9 +1,7 @@
 package gameui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
 
 //
 // Classe MainFrame - JFrame
@@ -53,6 +51,7 @@ public class MainFrame extends JFrame {
 		} catch (Exception e) {
 			System.out.println("Erro na criacao do look and feel!");
 		}
+		
 	}
 
 	//

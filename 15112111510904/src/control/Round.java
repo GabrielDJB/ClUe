@@ -1,8 +1,5 @@
 package control;
 
-import java.util.ArrayList;
-import java.util.List;
-
 //
 // Classe Round - Singleton
 //
@@ -67,15 +64,15 @@ public final class Round {
 	}
 
 	public Player nextTurn() {
-		Player p = Control.jogadores.get(0);
+		Player p = getCurrP();
 		Control.jogadores.remove(0);
 		Control.jogadores.add(Control.jogadores.size(), p);
 		dado = 0;
+		
 		return p;
 	}
-	
-	public Player getCurrP(){
-		Player p = Control.jogadores.get(0);
-		return p;
+
+	public Player getCurrP() {
+		return Control.jogadores.get(0);
 	}
 }

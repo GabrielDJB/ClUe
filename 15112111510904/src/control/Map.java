@@ -113,11 +113,13 @@ final class Graph {
 				if (f.next().compareTo("#") != 0)
 					throw new MapaGenerateException();
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(-1);
 		} finally {
-			f.close();
+			if (f != null)
+				f.close();
 		}
 	}
 
@@ -152,6 +154,7 @@ final class Graph {
 				tmp.visitado = true;
 				newNeighbours.addAll(tmp.getNeighbours());
 			}
+			
 			neighbours = new ArrayList<Vertex>(newNeighbours);
 			newNeighbours.clear();
 			hops--;
@@ -189,6 +192,9 @@ final class Comodos {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(-1);
+		} finally {
+			if (f != null)
+				f.close();
 		}
 	}
 
@@ -199,6 +205,7 @@ final class Comodos {
 			if (pontos[i].isInside(x, y))
 				return -(i + 1);
 		}
+		
 		return 0;
 	}
 
@@ -214,12 +221,14 @@ public final class Map {
 	private Map() {
 		g = new Graph(182);
 		c = new Comodos("comodos.txt");
+		
 		try {
 			g.Generate("map.txt");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(-1);
 		}
+		
 	}
 
 	public static Map GetMapa() {
@@ -270,10 +279,11 @@ public final class Map {
 			g.resetVertexs();
 			return v;
 		}
+		
 		return false;
 	}
 
-	/* Retorna vértice correspondente a x,y */
+	/* Retorna vértice correspondente a x, y */
 	public int coordTransform(int x, int y) {
 		int ret = c.isInside(x, y);
 

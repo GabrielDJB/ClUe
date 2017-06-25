@@ -2,6 +2,8 @@ package gameui;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import control.LoadGame;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -54,6 +56,7 @@ final class TratadorCarregarJogo implements ActionListener {
 
 	public TratadorCarregarJogo(Component parent) {
 		fc = new JFileChooser();
+		fc.addChoosableFileFilter(new FileNameExtensionFilter("Clue save data", "cdata"));
 		this.parent = parent;
 	}
 
@@ -70,7 +73,10 @@ final class TratadorCarregarJogo implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		fc.showOpenDialog(parent);
+		File f = fc.getSelectedFile();
+		new LoadGame(f);
 	}
+
 }
 
 //

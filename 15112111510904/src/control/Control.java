@@ -1,12 +1,10 @@
 package control;
 
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-
-import control.*;
 import gameui.UI;
 
 //
@@ -24,17 +22,18 @@ import gameui.UI;
 public abstract class Control {
 	public static Map mapa = Map.GetMapa(); // Mapa do jogo
 	public static boolean JogoAtivo = false; // Determina se o jogo está rodando
-	public static Round rodada = Round.GetRodada(); // Manager de rodadas do jogo
-	
+	public static Round rodada = Round.GetRodada(); // Manager de rodadas do
+													// jogo
+
 	private static Random r = new Random();
 	public static int GameArma;
 	public static int GameSuspeito;
 	public static int GameComodo;
-	
-	//private int GunSelect[] = {1,1,1,1,1,1};
-	//private int SuspectSelect[] = {1,1,1,1,1,1};		
-	//private int LocalSelect[] = {1,1,1,1,1,1,1,1,1};
-	
+
+	// private int GunSelect[] = {1,1,1,1,1,1};
+	// private int SuspectSelect[] = {1,1,1,1,1,1};
+	// private int LocalSelect[] = {1,1,1,1,1,1,1,1,1};
+
 	// Lista dos jogadores da instância do jogo
 	public static List<Player> jogadores = new ArrayList<Player>();
 
@@ -55,7 +54,6 @@ public abstract class Control {
 		System.out.println(Integer.toString(GameArma));
 		System.out.println(Integer.toString(GameSuspeito));
 		System.out.println(Integer.toString(GameComodo));
-		
 	}
 
 	//
@@ -88,6 +86,26 @@ public abstract class Control {
 		jogadores.add(p);
 	}
 
+	public static void AddPlayer(String name, int graph, int njogadas, int x, int y) {
+		Player p = null;
+
+		if (name.compareTo(new String("Pele")) == 0) {
+			p = new Player(name, njogadas, graph, x, y, Color.white);
+		} else if (name.compareTo(new String("Maradona")) == 0) {
+			p = new Player(name, njogadas, graph, x, y, Color.green);
+		} else if (name.compareTo(new String("Eric Cantona")) == 0) {
+			p = new Player(name, njogadas, graph, x, y, Color.blue);
+		} else if (name.compareTo(new String("Zinedine Zidane")) == 0) {
+			p = new Player(name, njogadas, graph, x, y, Color.cyan);
+		} else if (name.compareTo(new String("Ronaldinho Gaucho")) == 0) {
+			p = new Player(name, njogadas, graph, x, y, Color.red);
+		} else if (name.compareTo(new String("Taffarel")) == 0) {
+			p = new Player(name, njogadas, graph, x, y, Color.yellow);
+		}
+
+		jogadores.add(p);
+	}
+
 	//
 	// Método getPlayer - Abstrato
 	//
@@ -100,11 +118,13 @@ public abstract class Control {
 	//
 
 	public static Player getPlayer(String name) {
+		
 		for (Player i : jogadores) {
 			if (i.getNome().equals(name)) {
 				return i;
 			}
 		}
+		
 		UI.Alert("Erro na busca por jogador!");
 		return null;
 	}
@@ -133,39 +153,43 @@ public abstract class Control {
 		System.out.println(Integer.toString(jogadores.size()));
 	}
 
-	public static int CheckCards(int arma, int suspeito, int comodo){
-		if(GameArma == arma && GameSuspeito == suspeito && GameComodo == comodo){
+	public static int CheckCards(int arma, int suspeito, int comodo) {
+		
+		if (GameArma == arma && GameSuspeito == suspeito && GameComodo == comodo)
 			return 1;
-		}
 		return 0;
 	}
-	
-	//Nao vai ser randomico, vai checar arma primeiro, suspeito depois e comodo por ultimo.
-	public static int[] CounterProof(int vet[]){
-		int ret[] = {0,0};
-		if(vet[0] != GameArma){
-			ret[0] = 0; //Tipo arma
+
+	// Nao vai ser randomico, vai checar arma primeiro, suspeito depois e comodo
+	// por ultimo.
+	public static int[] CounterProof(int vet[]) {
+		int ret[] = { 0, 0 };
+		
+		if (vet[0] != GameArma) {
+			ret[0] = 0; // Tipo arma
 			ret[1] = vet[0];
 			return ret;
-			
-		} else if (vet[1] != GameSuspeito){
-			ret[0] = 1; //Tipo suspeito
+		} else if (vet[1] != GameSuspeito) {
+			ret[0] = 1; // Tipo suspeito
 			ret[1] = vet[1];
 			return ret;
-		
 		} else {
 			ret[0] = 2;
 			ret[1] = vet[2];
 			return ret;
 		}
 	}
-	
-	public static Player GetCurrP(){
+
+	public static Player GetCurrP() {
 		return rodada.getCurrP();
 	}
-	
-	public static void AddCardCurr(int type, int card){
+
+	public static void AddCardCurr(int type, int card) {
 		Player p = rodada.getCurrP();
 		p.addCard(type, card);
+	}
+
+	public static void SaveThisGame(File f) {
+		new SaveGame(f);
 	}
 }

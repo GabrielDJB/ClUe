@@ -1,6 +1,5 @@
 package gameui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import control.Control;
@@ -8,7 +7,6 @@ import control.Control;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 import java.util.Random;
 
 //
@@ -34,6 +32,7 @@ final class DiceButtonHandler implements ActionListener {
 	//
 
 	public void actionPerformed(ActionEvent e) {
+		
 		if (Control.rodada.getDado() == 0) {
 			Random r = new Random();
 			int d = r.nextInt(6) + 1;
@@ -41,6 +40,7 @@ final class DiceButtonHandler implements ActionListener {
 		} else {
 			UI.Alert("O jogador " + Control.jogadores.get(0).getNome() + " deve jogar!");
 		}
+		
 	}
 }
 
@@ -74,12 +74,12 @@ public class DicePanel extends JPanel {
 		diceImage.setHorizontalAlignment(JLabel.CENTER);
 		dice.addActionListener(new DiceButtonHandler());
 
-		DiceIcon1 = new ImageIcon("img/Tabuleiros/dado1.JPG");
-		DiceIcon2 = new ImageIcon("img/Tabuleiros/dado2.JPG");
-		DiceIcon3 = new ImageIcon("img/Tabuleiros/dado3.JPG");
-		DiceIcon4 = new ImageIcon("img/Tabuleiros/dado4.JPG");
-		DiceIcon5 = new ImageIcon("img/Tabuleiros/dado5.JPG");
-		DiceIcon6 = new ImageIcon("img/Tabuleiros/dado6.JPG");
+		DiceIcon1 = new ImageIcon("img/Tabuleiros/dado1.jgg");
+		DiceIcon2 = new ImageIcon("img/Tabuleiros/dado2.jpg");
+		DiceIcon3 = new ImageIcon("img/Tabuleiros/dado3.jpg");
+		DiceIcon4 = new ImageIcon("img/Tabuleiros/dado4.jpg");
+		DiceIcon5 = new ImageIcon("img/Tabuleiros/dado5.jpg");
+		DiceIcon6 = new ImageIcon("img/Tabuleiros/dado6.jpg");
 	}
 
 	//

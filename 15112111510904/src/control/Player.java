@@ -23,9 +23,9 @@ public final class Player {
 	private Color color;
 	private boolean isActive = false;
 	private int jogadas = 0;
-	private int armas[] = {0,0,0,0,0,0};
-	private int suspeitos[] = {0,0,0,0,0,0};
-	private int comodos[] = {0,0,0,0,0,0,0,0,0};
+	private int armas[] = { 0, 0, 0, 0, 0, 0 };
+	private int suspeitos[] = { 0, 0, 0, 0, 0, 0 };
+	private int comodos[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	//
 	// Construtor Player
@@ -46,7 +46,22 @@ public final class Player {
 		this.name = name;
 		this.posInicial = posInicial;
 		_loc = arrayLoc++;
-		Player.posVertex[_loc] = -1;
+		Player.posVertex[_loc] = -321;
+		color = c;
+		posx = px;
+		posy = py;
+	}
+
+	public Player(String name, int njogadas, int posV, int px, int py, Color c) {
+		if (Player.posVertex == null) {
+			Player.posVertex = new int[Control.rodada.getNumJogadores()];
+		}
+
+		this.name = name;
+		posInicial = -321;
+		jogadas = njogadas;
+		_loc = arrayLoc++;
+		Player.posVertex[_loc] = posV;
 		color = c;
 		posx = px;
 		posy = py;
@@ -108,7 +123,7 @@ public final class Player {
 	//
 
 	public int getPosV() {
-		if (Player.posVertex[_loc] == -1 && jogadas == 0) {
+		if (Player.posVertex[_loc] == -321 && jogadas == 0) {
 			return posInicial;
 		}
 		return Player.posVertex[_loc];
@@ -171,13 +186,39 @@ public final class Player {
 	public int getNumJogadas() {
 		return jogadas;
 	}
-	
+
+	public int[] getArmas() {
+		return armas;
+	}
+
+	public int[] getComodos() {
+		return comodos;
+	}
+
+	public int[] getSuspeitos() {
+		return suspeitos;
+	}
+
+	public void setArmas(int[] array) {
+		armas = array;
+	}
+
+	public void setComodos(int[] array) {
+		comodos = array;
+	}
+
+	public void setSuspeitos(int[] array) {
+		suspeitos = array;
+	}
+
 	// tipo 0 = armas; tipo 1 = suspeitos; tipo 2 = comodos
-	public int addCard(int type, int card){
-		if((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5)) || (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2){
+	public int addCard(int type, int card) {
+		
+		if ((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5))
+				|| (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2)
 			return -1;
-		} else {
-			if(type == 0) {
+		else {
+			if (type == 0) {
 				armas[card] = 1;
 				return 1;
 			} else if (type == 1) {
@@ -188,33 +229,34 @@ public final class Player {
 				return 1;
 			}
 		}
+		
 	}
-	
+
 	// tipo 0 = armas; tipo 1 = suspeitos; tipo 2 = comodos
-	public int hasCard(int type, int card){
-		if((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5)) || (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2){
+	public int hasCard(int type, int card) {
+		
+		if ((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5))
+				|| (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2)
 			return -1;
-		} else {
-			if(type == 0) {
-				if(armas[card] == 1){
+		else {
+			if (type == 0) {
+				if (armas[card] == 1)
 					return 1;
-				} else {
+				else
 					return 0;
-				}
 			} else if (type == 1) {
-				if(suspeitos[card] == 1){
+				if (suspeitos[card] == 1)
 					return 1;
-				} else {
+				else
 					return 0;
-				}
 			} else {
-				if(comodos[card] == 1){
+				if (comodos[card] == 1)
 					return 1;
-				} else {
+				else
 					return 0;
-				}
 			}
 		}
+		
 	}
 
 }

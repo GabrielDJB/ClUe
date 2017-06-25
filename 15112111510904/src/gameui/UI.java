@@ -115,7 +115,7 @@ public abstract class UI {
 
 	public static void cardFrame() {
 		JFrame cardf = new JFrame("Seleção de Cartas");
-		CardSelector CardSPanel = new CardSelector(cardf.getContentPane());
+		new CardSelector(cardf.getContentPane());
 		cardf.setBounds(50, 50, 500, 420);
 		cardf.setVisible(true);
 	}
@@ -198,87 +198,88 @@ public abstract class UI {
 		acusa.Show();
 		acusa.setVisible(true);
 	}
-	
-	public static void CloseAcusaFrame(){
+
+	public static void CloseAcusaFrame() {
 		acusa.dispose();
 	}
-	
-	public static void ClosePalpiteFrame(){
+
+	public static void ClosePalpiteFrame() {
 		palpite.dispose();
 	}
-	
-	public static int[] PalpiteSelection(){
+
+	public static int[] PalpiteSelection() {
 		return palpite.GetSelection();
 	}
-	
-	public static int Palpite(int p[]){
+
+	public static int Palpite(int p[]) {
 		int ret = 0;
 		ret = Control.CheckCards(p[0], p[1], p[2]);
 		return ret;
 	}
-		
-	public static int[] AcusaSelection(){
+
+	public static int[] AcusaSelection() {
 		return acusa.GetSelection();
 	}
-	
-	public static int Acusa(int p[]){
+
+	public static int Acusa(int p[]) {
 		int ret = 0;
 		ret = Control.CheckCards(p[0], p[1], p[2]);
 		return ret;
 	}
-	
-	public static void PrintCP(int cp[]){
-		
-		if(cp[0] == 0){
-			if(cp[1] == 0)
+
+	public static void PrintCP(int cp[]) {
+
+		if (cp[0] == 0) {
+			if (cp[1] == 0)
 				UI.Alert("Cano");
-			else if(cp[1] == 1)
+			else if (cp[1] == 1)
 				UI.Alert("Castical");
-			else if(cp[1] == 2)
+			else if (cp[1] == 2)
 				UI.Alert("Chave Inglesa");
-			else if(cp[1] == 3)
+			else if (cp[1] == 3)
 				UI.Alert("Corda");
-			else if(cp[1] == 4)
+			else if (cp[1] == 4)
 				UI.Alert("Faca");
 			else
 				UI.Alert("Revolver");
 		}
-		
-		if(cp[0] == 1){
-			if(cp[1] == 0)
+
+		if (cp[0] == 1) {
+			if (cp[1] == 0)
 				UI.Alert("Green");
-			else if(cp[1] == 1)
+			else if (cp[1] == 1)
 				UI.Alert("Mustard");
-			else if(cp[1] == 2)
+			else if (cp[1] == 2)
 				UI.Alert("Peacock");
-			else if(cp[1] == 3)
+			else if (cp[1] == 3)
 				UI.Alert("Plum");
-			else if(cp[1] == 4)
+			else if (cp[1] == 4)
 				UI.Alert("Scarlet");
 			else
 				UI.Alert("White");
 		}
-		
-		if(cp[0] == 2){
-			if(cp[1] == 0)
+
+		if (cp[0] == 2) {
+			if (cp[1] == 0)
 				UI.Alert("Biblioteca");
-			else if(cp[1] == 1)
+			else if (cp[1] == 1)
 				UI.Alert("Cozinha");
-			else if(cp[1] == 2)
+			else if (cp[1] == 2)
 				UI.Alert("Entrada");
-			else if(cp[1] == 3)
+			else if (cp[1] == 3)
 				UI.Alert("Escritorio");
-			else if(cp[1] == 4)
+			else if (cp[1] == 4)
 				UI.Alert("Jardim de Inverno");
-			else if(cp[1] == 5)
+			else if (cp[1] == 5)
 				UI.Alert("Sala de Estar");
-			else if(cp[1] == 6)
+			else if (cp[1] == 6)
 				UI.Alert("Sala de Jantar");
-			else if(cp[1] == 7)
+			else if (cp[1] == 7)
 				UI.Alert("Sala de Musica");
-			else if(cp[1] == 8)
+			else if (cp[1] == 8)
 				UI.Alert("Sala de Jogos");
 		}
+		
 	}
 
 }

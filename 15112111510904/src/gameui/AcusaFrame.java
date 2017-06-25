@@ -1,6 +1,5 @@
 package gameui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import control.Control;
@@ -8,22 +7,24 @@ import control.Control;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 
-final class AcusaOKHandler implements ActionListener{
-	public void actionPerformed(ActionEvent e){
+final class AcusaOKHandler implements ActionListener {
+	
+	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.AcusaSelection();
 		int ret = UI.Acusa(p);
+	
 		if (ret == 1) {
 			System.out.println("Ganharam o jogo!");
 			System.exit(0);
 		} else if (ret == 0) {
 			int cp[] = Control.CounterProof(p);
 			UI.PrintCP(cp);
-			System.out.println("Errou acusação!");
+			System.out.println("Errou acusaï¿½ï¿½o!");
 		}
 		UI.CloseAcusaFrame();
 	}
+	
 }
 
 public class AcusaFrame extends JFrame {
@@ -174,34 +175,39 @@ public class AcusaFrame extends JFrame {
 		c.add(panel);
 		panel.setVisible(true);
 	}
-	
-	public int[] GetSelection(){
-		
-		int vet[] = {0,0,0}; int i = 0;
-		
-		for(JRadioButton j1 : armas){
-			if(j1.isSelected()){
+
+	public int[] GetSelection() {
+		int vet[] = { 0, 0, 0 };
+		int i = 0;
+
+		for (JRadioButton j1 : armas) {
+			if (j1.isSelected()) {
 				vet[0] = i;
 				break;
 			}
 			i++;
 		}
+		
 		i = 0;
-		for(JRadioButton j2 : suspeitos){
-			if(j2.isSelected()){
+		
+		for (JRadioButton j2 : suspeitos) {
+			if (j2.isSelected()) {
 				vet[1] = i;
 				break;
 			}
 			i++;
 		}
+		
 		i = 0;
-		for(JRadioButton j3 : locais){
-			if(j3.isSelected()){
+		
+		for (JRadioButton j3 : locais) {
+			if (j3.isSelected()) {
 				vet[2] = i;
 				break;
 			}
 			i++;
 		}
+		
 		return vet;
 	}
 }

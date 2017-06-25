@@ -1,10 +1,8 @@
 package gameui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
 import control.Control;
 
 final class NextPlayHandler implements ActionListener {

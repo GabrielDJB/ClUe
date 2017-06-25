@@ -43,6 +43,7 @@ final class TratadorOK implements ActionListener {
 	//
 
 	public void actionPerformed(ActionEvent e) {
+		
 		for (JCheckBox tmp : boxes) {
 			if (tmp.isSelected())
 				Control.rodada.addNumP();
@@ -53,6 +54,7 @@ final class TratadorOK implements ActionListener {
 				Control.AddPlayer(b.getText());
 			}
 		}
+		
 		Control.printNP();
 		UI.mainf.dispose();
 		UI.GameStart();
@@ -153,6 +155,7 @@ public class CharSelectPanel extends JPanel {
 		for (JCheckBox b : boxes) {
 			this.add(b);
 		}
+		
 	}
 
 	//
