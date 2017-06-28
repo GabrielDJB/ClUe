@@ -281,5 +281,15 @@ public abstract class UI {
 		}
 		
 	}
+	
+	public static int InComodo(){
+		Player p = Control.GetCurrP();
+		int ret = p.getPosV();
+		if(ret < 0){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
 
 }

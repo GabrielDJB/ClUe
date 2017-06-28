@@ -75,11 +75,29 @@ public class DicePanel extends JPanel {
 		dice.addActionListener(new DiceButtonHandler());
 
 		DiceIcon1 = new ImageIcon("img/Tabuleiros/dado1.jgg");
+		if(DiceIcon1.getImageLoadStatus() == MediaTracker.ERRORED){
+			System.out.println("Deu ruim no carregamento da imagem de dados 1");
+		}
 		DiceIcon2 = new ImageIcon("img/Tabuleiros/dado2.jpg");
+		if(DiceIcon2.getImageLoadStatus() == MediaTracker.ERRORED){
+			System.out.println("Deu ruim no carregamento da imagem de dados 2");
+		}
 		DiceIcon3 = new ImageIcon("img/Tabuleiros/dado3.jpg");
+		if(DiceIcon3.getImageLoadStatus() == MediaTracker.ERRORED){
+			System.out.println("Deu ruim no carregamento da imagem de dados 3");
+		}
 		DiceIcon4 = new ImageIcon("img/Tabuleiros/dado4.jpg");
+		if(DiceIcon4.getImageLoadStatus() == MediaTracker.ERRORED){
+			System.out.println("Deu ruim no carregamento da imagem de dados 4");
+		}
 		DiceIcon5 = new ImageIcon("img/Tabuleiros/dado5.jpg");
+		if(DiceIcon5.getImageLoadStatus() == MediaTracker.ERRORED){
+			System.out.println("Deu ruim no carregamento da imagem de dados 5");
+		}
 		DiceIcon6 = new ImageIcon("img/Tabuleiros/dado6.jpg");
+		if(DiceIcon6.getImageLoadStatus() == MediaTracker.ERRORED){
+			System.out.println("Deu ruim no carregamento da imagem de dados 6");
+		}
 	}
 
 	//
@@ -104,22 +122,27 @@ public class DicePanel extends JPanel {
 		} else if (dice == 2) {
 			diceImage.setIcon(DiceIcon2);
 			diceImage.repaint();
+			diceImage.setVisible(true);
 			System.out.println("Repaint 2");
 		} else if (dice == 3) {
 			diceImage.setIcon(DiceIcon3);
 			diceImage.repaint();
+			diceImage.setVisible(true);
 			System.out.println("Repaint 3");
 		} else if (dice == 4) {
 			diceImage.setIcon(DiceIcon4);
 			diceImage.repaint();
+			diceImage.setVisible(true);
 			System.out.println("Repaint 4");
 		} else if (dice == 5) {
 			diceImage.setIcon(DiceIcon5);
 			diceImage.repaint();
+			diceImage.setVisible(true);
 			System.out.println("Repaint 5");
 		} else if (dice == 6) {
 			diceImage.setIcon(DiceIcon6);
 			diceImage.repaint();
+			diceImage.setVisible(true);
 			System.out.println("Repaint 6");
 		} else {
 			UI.Alert("Valor Inválido no dado!");

@@ -10,14 +10,17 @@ final class PalpiteOKHandler implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.PalpiteSelection();
 		int ret = UI.Palpite(p);
-
-		if (ret == 1) {
-			System.out.println("Acertou o palpite!");
-		} else if (ret == 0) {
-			int cp[] = Control.CounterProof(p);
-			Control.AddCardCurr(cp[0], cp[1]);
-			UI.PrintCP(cp);
-			System.out.println("Errou palpite!");
+		if(UI.InComodo() == 1){
+			if (ret == 1) {
+				System.out.println("Acertou o palpite!");
+			} else if (ret == 0) {
+				int cp[] = Control.CounterProof(p);
+				Control.AddCardCurr(cp[0], cp[1]);
+				UI.PrintCP(cp);
+				System.out.println("Errou palpite!");
+			}	
+		} else {
+			UI.Alert("Palpites devem ser feitos dentro de cômodos.");
 		}
 		UI.ClosePalpiteFrame();
 	}

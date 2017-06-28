@@ -12,15 +12,19 @@ final class AcusaOKHandler implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.AcusaSelection();
-		int ret = UI.Acusa(p);
-	
-		if (ret == 1) {
-			System.out.println("Ganharam o jogo!");
-			System.exit(0);
-		} else if (ret == 0) {
-			int cp[] = Control.CounterProof(p);
-			UI.PrintCP(cp);
-			System.out.println("Errou acusaï¿½ï¿½o!");
+		int ret;
+		if(UI.InComodo() == 1) {
+			ret = UI.Acusa(p);
+			if (ret == 1) {
+				System.out.println("Ganharam o jogo!");
+				System.exit(0);
+			} else if (ret == 0) {
+				int cp[] = Control.CounterProof(p);
+				UI.PrintCP(cp);
+				System.out.println("Errou acusacao!");
+			}
+		} else {
+			UI.Alert("Acusações devem ser feitas dentro de cômodos!");	
 		}
 		UI.CloseAcusaFrame();
 	}
