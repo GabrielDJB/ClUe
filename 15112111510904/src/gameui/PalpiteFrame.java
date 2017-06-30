@@ -5,6 +5,9 @@ import control.Control;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import observers.PalpiteObserver;
+import observers.GuessObserved;
+import observers.GuessObserver;
 
 final class PalpiteOKHandler implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
@@ -26,7 +29,7 @@ final class PalpiteOKHandler implements ActionListener {
 	}
 }
 
-public class PalpiteFrame extends JFrame {
+public class PalpiteFrame extends JFrame implements GuessObserved {
 	ButtonGroup s, a, l;
 	JRadioButton suspeitos[] = new JRadioButton[6];
 	JRadioButton armas[] = new JRadioButton[6];
@@ -35,6 +38,7 @@ public class PalpiteFrame extends JFrame {
 	JPanel panel;
 	Container c = this.getContentPane();
 	JButton b = new JButton("Submeter Palpite");
+	GuessObserver obs;
 
 	public PalpiteFrame() {
 
@@ -51,6 +55,8 @@ public class PalpiteFrame extends JFrame {
 		b.addActionListener(new PalpiteOKHandler());
 
 		panel.add(b);
+		
+		this.SetObserver();
 	}
 
 	public void SuspectList() {
@@ -208,5 +214,9 @@ public class PalpiteFrame extends JFrame {
 		}
 
 		return vet;
+	}
+	
+	public void SetObserver(){
+		obs = PalpiteObserver.GetPalpiteObserver();
 	}
 }

@@ -1,12 +1,13 @@
 package gameui;
 
 import javax.swing.*;
-
 import control.Control;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import observers.AcuseObserved;
+import observers.AcuseObserver;
+import observers.AcusaObserver;
 
 final class AcusaOKHandler implements ActionListener {
 	
@@ -31,7 +32,7 @@ final class AcusaOKHandler implements ActionListener {
 	
 }
 
-public class AcusaFrame extends JFrame {
+public class AcusaFrame extends JFrame implements AcuseObserved {
 	ButtonGroup s, a, l;
 	JRadioButton suspeitos[] = new JRadioButton[6];
 	JRadioButton armas[] = new JRadioButton[6];
@@ -40,6 +41,7 @@ public class AcusaFrame extends JFrame {
 	JPanel panel;
 	Container c = this.getContentPane();
 	JButton b = new JButton("Submeter Acusacao");
+	AcusaObserver obs;
 
 	public AcusaFrame() {
 
@@ -56,6 +58,8 @@ public class AcusaFrame extends JFrame {
 		b.addActionListener(new AcusaOKHandler());
 
 		panel.add(b);
+		
+		this.SetObserver();
 	}
 
 	public void SuspectList() {
@@ -213,5 +217,9 @@ public class AcusaFrame extends JFrame {
 		}
 		
 		return vet;
+	}
+	
+	public void SetObserver(){
+		obs = AcusaObserver.GetInstance();
 	}
 }
