@@ -1,7 +1,6 @@
 package gameui;
 
 import javax.swing.*;
-import control.Control;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,12 @@ import observers.GuessObserved;
 import observers.GuessObserver;
 
 final class PalpiteOKHandler implements ActionListener {
+	PalpiteFrame frame;
+	
+	public PalpiteOKHandler(PalpiteFrame f){
+		frame = f;
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.PalpiteSelection();
 		int ret = UI.Palpite(p);
@@ -17,8 +22,8 @@ final class PalpiteOKHandler implements ActionListener {
 			if (ret == 1) {
 				System.out.println("Acertou o palpite!");
 			} else if (ret == 0) {
-				int cp[] = Control.CounterProof(p);
-				Control.AddCardCurr(cp[0], cp[1]);
+				int cp[] = frame.RequestCP(p);
+				frame.RequestAddCard(cp[0], cp[1]);
 				UI.PrintCP(cp);
 				System.out.println("Errou palpite!");
 			}
@@ -52,7 +57,7 @@ public class PalpiteFrame extends JFrame implements GuessObserved {
 		this.setBounds(100, 100, 480, 490);
 		this.setResizable(false);
 		b.setBounds(220, 360, 200, 50);
-		b.addActionListener(new PalpiteOKHandler());
+		b.addActionListener(new PalpiteOKHandler(this));
 
 		panel.add(b);
 
@@ -218,5 +223,13 @@ public class PalpiteFrame extends JFrame implements GuessObserved {
 
 	public void SetObserver() {
 		obs = PalpiteObserver.GetPalpiteObserver();
+	}
+	
+	public int[] RequestCP (int[] p) {
+		return obs.ProvideCP(p);
+	}
+	
+	public void RequestAddCard(int c0, int c1){
+		obs.AddCardCurr(c0,c1);
 	}
 }
