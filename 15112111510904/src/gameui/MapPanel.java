@@ -64,7 +64,7 @@ final class MapHandler implements MouseListener {
 			} else if (origem == -123 || destino == -123) {
 				current.setActive(false);
 			} else if (origem < 0 && destino < 0) {
-				
+
 				if (Player.checkCollision(destino) != true) {
 					if (origem == -1 && destino == -9 || origem == -9 && destino == -1) {
 						current.setPos(e.getX(), e.getY());
@@ -72,7 +72,7 @@ final class MapHandler implements MouseListener {
 						current.setPos(e.getX(), e.getY());
 					}
 				}
-				
+
 				current.setActive(false);
 			} else if (Control.mapa.evalPath(origem, destino, Control.rodada.getDado())
 					&& Player.checkCollision(destino) != true) {
@@ -81,10 +81,10 @@ final class MapHandler implements MouseListener {
 				current.setPosV(destino);
 				current.addJogada();
 			}
-			
+
 			UI.RefreshMap();
 		}
-		
+
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -136,7 +136,7 @@ public class MapPanel extends JPanel {
 			System.out.println(e.getMessage());
 			System.exit(-1);
 		}
-		
+
 		this.addMouseListener(new MapHandler());
 	}
 
@@ -160,7 +160,6 @@ public class MapPanel extends JPanel {
 		int r = 15;
 		Graphics2D g2d = (Graphics2D) g;
 
-		
 		for (Player p : Control.jogadores) {
 			int pos[] = p.getPos();
 			int cx = pos[0];
@@ -174,15 +173,15 @@ public class MapPanel extends JPanel {
 			g2d.setColor(c);
 			g2d.fill(circ);
 			g2d.draw(circ);
-		
+
 			if (p.isActive()) {
 				g2d.setColor(Color.BLACK);
 				g2d.setStroke(new BasicStroke(2.0f));
 				g2d.draw(interior);
 			}
-			
+
 		}
-		
+
 	}
 
 }

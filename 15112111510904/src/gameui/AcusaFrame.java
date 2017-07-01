@@ -10,11 +10,11 @@ import observers.AcuseObserver;
 import observers.AcusaObserver;
 
 final class AcusaOKHandler implements ActionListener {
-	
+
 	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.AcusaSelection();
 		int ret;
-		if(UI.InComodo() == 1) {
+		if (UI.InComodo() == 1) {
 			ret = UI.Acusa(p);
 			if (ret == 1) {
 				System.out.println("Ganharam o jogo!");
@@ -25,11 +25,11 @@ final class AcusaOKHandler implements ActionListener {
 				System.out.println("Errou acusacao!");
 			}
 		} else {
-			UI.Alert("Acusações devem ser feitas dentro de cômodos!");	
+			UI.Alert("Acusaï¿½ï¿½es devem ser feitas dentro de cï¿½modos!");
 		}
 		UI.CloseAcusaFrame();
 	}
-	
+
 }
 
 public class AcusaFrame extends JFrame implements AcuseObserved {
@@ -58,7 +58,7 @@ public class AcusaFrame extends JFrame implements AcuseObserved {
 		b.addActionListener(new AcusaOKHandler());
 
 		panel.add(b);
-		
+
 		this.SetObserver();
 	}
 
@@ -195,9 +195,9 @@ public class AcusaFrame extends JFrame implements AcuseObserved {
 			}
 			i++;
 		}
-		
+
 		i = 0;
-		
+
 		for (JRadioButton j2 : suspeitos) {
 			if (j2.isSelected()) {
 				vet[1] = i;
@@ -205,9 +205,9 @@ public class AcusaFrame extends JFrame implements AcuseObserved {
 			}
 			i++;
 		}
-		
+
 		i = 0;
-		
+
 		for (JRadioButton j3 : locais) {
 			if (j3.isSelected()) {
 				vet[2] = i;
@@ -215,11 +215,11 @@ public class AcusaFrame extends JFrame implements AcuseObserved {
 			}
 			i++;
 		}
-		
+
 		return vet;
 	}
-	
-	public void SetObserver(){
+
+	public void SetObserver() {
 		obs = AcusaObserver.GetInstance();
 	}
 }

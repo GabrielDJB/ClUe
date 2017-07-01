@@ -16,7 +16,7 @@ public final class Player {
 	private int posInicial;
 	private int _loc;
 	private static int arrayLoc = 0;
-	private static int posVertex[] = null;
+	private static int posVertex[] = new int[6];
 	private int posx;
 	private int posy;
 	private String name = new String();
@@ -39,10 +39,6 @@ public final class Player {
 	//
 
 	public Player(String name, int posInicial, int px, int py, Color c) {
-		if (Player.posVertex == null) {
-			Player.posVertex = new int[Control.rodada.getNumJogadores()];
-		}
-
 		this.name = name;
 		this.posInicial = posInicial;
 		_loc = arrayLoc++;
@@ -53,10 +49,6 @@ public final class Player {
 	}
 
 	public Player(String name, int njogadas, int posV, int px, int py, Color c) {
-		if (Player.posVertex == null) {
-			Player.posVertex = new int[Control.rodada.getNumJogadores()];
-		}
-
 		this.name = name;
 		posInicial = -321;
 		jogadas = njogadas;
@@ -213,7 +205,7 @@ public final class Player {
 
 	// tipo 0 = armas; tipo 1 = suspeitos; tipo 2 = comodos
 	public int addCard(int type, int card) {
-		
+
 		if ((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5))
 				|| (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2)
 			return -1;
@@ -229,12 +221,12 @@ public final class Player {
 				return 1;
 			}
 		}
-		
+
 	}
 
 	// tipo 0 = armas; tipo 1 = suspeitos; tipo 2 = comodos
 	public int hasCard(int type, int card) {
-		
+
 		if ((type == 0 && (card < 0 || card > 5)) || (type == 1 && (card < 0 || card > 5))
 				|| (type == 2 && (card < 0 || card > 8)) || type < 0 || type > 2)
 			return -1;
@@ -256,7 +248,7 @@ public final class Player {
 					return 0;
 			}
 		}
-		
+
 	}
 
 }

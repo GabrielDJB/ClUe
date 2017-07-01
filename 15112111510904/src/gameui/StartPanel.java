@@ -72,9 +72,15 @@ final class TratadorCarregarJogo implements ActionListener {
 	//
 
 	public void actionPerformed(ActionEvent e) {
-		fc.showOpenDialog(parent);
-		File f = fc.getSelectedFile();
-		new LoadGame(f);
+		int ret;
+
+		ret = fc.showOpenDialog(parent);
+		if (ret == fc.APPROVE_OPTION) {
+			new LoadGame(fc.getSelectedFile());
+			UI.mainf.dispose();
+			UI.GameStart();
+		}
+
 	}
 
 }

@@ -32,7 +32,7 @@ final class DiceButtonHandler implements ActionListener {
 	//
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (Control.rodada.getDado() == 0) {
 			Random r = new Random();
 			int d = r.nextInt(6) + 1;
@@ -40,7 +40,7 @@ final class DiceButtonHandler implements ActionListener {
 		} else {
 			UI.Alert("O jogador " + Control.jogadores.get(0).getNome() + " deve jogar!");
 		}
-		
+
 	}
 }
 
@@ -75,27 +75,27 @@ public class DicePanel extends JPanel {
 		dice.addActionListener(new DiceButtonHandler());
 
 		DiceIcon1 = new ImageIcon("img/Tabuleiros/dado1.jgg");
-		if(DiceIcon1.getImageLoadStatus() == MediaTracker.ERRORED){
+		if (DiceIcon1.getImageLoadStatus() == MediaTracker.ERRORED) {
 			System.out.println("Deu ruim no carregamento da imagem de dados 1");
 		}
 		DiceIcon2 = new ImageIcon("img/Tabuleiros/dado2.jpg");
-		if(DiceIcon2.getImageLoadStatus() == MediaTracker.ERRORED){
+		if (DiceIcon2.getImageLoadStatus() == MediaTracker.ERRORED) {
 			System.out.println("Deu ruim no carregamento da imagem de dados 2");
 		}
 		DiceIcon3 = new ImageIcon("img/Tabuleiros/dado3.jpg");
-		if(DiceIcon3.getImageLoadStatus() == MediaTracker.ERRORED){
+		if (DiceIcon3.getImageLoadStatus() == MediaTracker.ERRORED) {
 			System.out.println("Deu ruim no carregamento da imagem de dados 3");
 		}
 		DiceIcon4 = new ImageIcon("img/Tabuleiros/dado4.jpg");
-		if(DiceIcon4.getImageLoadStatus() == MediaTracker.ERRORED){
+		if (DiceIcon4.getImageLoadStatus() == MediaTracker.ERRORED) {
 			System.out.println("Deu ruim no carregamento da imagem de dados 4");
 		}
 		DiceIcon5 = new ImageIcon("img/Tabuleiros/dado5.jpg");
-		if(DiceIcon5.getImageLoadStatus() == MediaTracker.ERRORED){
+		if (DiceIcon5.getImageLoadStatus() == MediaTracker.ERRORED) {
 			System.out.println("Deu ruim no carregamento da imagem de dados 5");
 		}
 		DiceIcon6 = new ImageIcon("img/Tabuleiros/dado6.jpg");
-		if(DiceIcon6.getImageLoadStatus() == MediaTracker.ERRORED){
+		if (DiceIcon6.getImageLoadStatus() == MediaTracker.ERRORED) {
 			System.out.println("Deu ruim no carregamento da imagem de dados 6");
 		}
 	}

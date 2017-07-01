@@ -22,8 +22,7 @@ import gameui.UI;
 public abstract class Control {
 	public static Map mapa = Map.GetMapa(); // Mapa do jogo
 	public static boolean JogoAtivo = false; // Determina se o jogo está rodando
-	public static Round rodada = Round.GetRodada(); // Manager de rodadas do
-													// jogo
+	public static Round rodada = Round.GetRodada(); // Manager de rodadas do jogo
 
 	private static Random r = new Random();
 	public static int GameArma;
@@ -118,13 +117,13 @@ public abstract class Control {
 	//
 
 	public static Player getPlayer(String name) {
-		
+
 		for (Player i : jogadores) {
 			if (i.getNome().equals(name)) {
 				return i;
 			}
 		}
-		
+
 		UI.Alert("Erro na busca por jogador!");
 		return null;
 	}
@@ -154,7 +153,7 @@ public abstract class Control {
 	}
 
 	public static int CheckCards(int arma, int suspeito, int comodo) {
-		
+
 		if (GameArma == arma && GameSuspeito == suspeito && GameComodo == comodo)
 			return 1;
 		return 0;
@@ -164,7 +163,7 @@ public abstract class Control {
 	// por ultimo.
 	public static int[] CounterProof(int vet[]) {
 		int ret[] = { 0, 0 };
-		
+
 		if (vet[0] != GameArma) {
 			ret[0] = 0; // Tipo arma
 			ret[1] = vet[0];

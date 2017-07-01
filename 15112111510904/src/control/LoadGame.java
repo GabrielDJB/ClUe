@@ -13,18 +13,20 @@ public final class LoadGame {
 
 	// Parser do Arquivo cdata
 	public LoadGame(File _f) {
-		
+
 		try {
 			readthis = new Scanner(_f);
 			qtdplayers = readthis.nextInt();
-			readthis.next();
-			for (; qtdplayers >= 0; qtdplayers--)
+			for (; qtdplayers > 0; qtdplayers--) {
+				readthis.next();
 				loadPlayer();
+				readthis.next();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(-1);
 		}
-		
+
 	}
 
 	private void loadPlayer() {
@@ -47,7 +49,7 @@ public final class LoadGame {
 	}
 
 	private void populateComodos() {
-		int[] tmp = new int[lengthsusp];
+		int[] tmp = new int[lengthcomodos];
 		int i;
 
 		for (i = 0; i < lengthcomodos; i++) {

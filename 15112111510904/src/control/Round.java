@@ -68,7 +68,7 @@ public final class Round {
 		Control.jogadores.remove(0);
 		Control.jogadores.add(Control.jogadores.size(), p);
 		dado = 0;
-		
+
 		return p;
 	}
 

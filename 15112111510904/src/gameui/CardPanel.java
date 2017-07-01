@@ -1,9 +1,15 @@
 package gameui;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import control.Control;
+import control.SaveGame;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 //
 // Classe CardButtonHandler - Action Listener
@@ -29,6 +35,24 @@ final class CardButtonHandler implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		UI.cardFrame();
+	}
+}
+
+final class SaveButtonHandler implements ActionListener {
+
+	public void actionPerformed(ActionEvent e) {
+		JFileChooser fc = new JFileChooser();
+		int ret;
+
+		ret = fc.showSaveDialog(null);
+		fc.addChoosableFileFilter(new FileNameExtensionFilter("Clue save data", "cdata"));
+		if (ret == JFileChooser.APPROVE_OPTION) {
+			try {
+				Control.SaveThisGame(fc.getSelectedFile());
+			} finally {
+				System.out.println("Salvei!");
+			}
+		}
 	}
 }
 
@@ -60,6 +84,7 @@ public class CardPanel extends JPanel {
 		super(new GridLayout(2, 1));
 		this.setBackground(Color.BLACK);
 		cards.addActionListener(new CardButtonHandler());
+		save.addActionListener(new SaveButtonHandler());
 		this.add(save);
 		this.add(cards);
 	}

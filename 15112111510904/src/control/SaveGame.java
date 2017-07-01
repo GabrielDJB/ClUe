@@ -13,10 +13,19 @@ public final class SaveGame {
 		try {
 			savehere = new BufferedWriter(new FileWriter(_f));
 			savehere.write(Control.rodada.getNumJogadores() + "");
+			savehere.newLine();
 			dump(Control.jogadores);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(-1);
+		} finally {
+			try {
+				savehere.flush();
+				savehere.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.exit(-1);
+			}
 		}
 
 	}
@@ -44,14 +53,15 @@ public final class SaveGame {
 				savehere.newLine();
 				savehere.write(p.getPosV() + "");
 				savehere.newLine();
-				savehere.write(p.getPos()[0]);
+				savehere.write(p.getPos()[0] + "");
 				savehere.newLine();
-				savehere.write(p.getPos()[1]);
+				savehere.write(p.getPos()[1] + "");
 				savehere.newLine();
 				dump(p.getArmas());
 				dump(p.getComodos());
 				dump(p.getSuspeitos());
 				savehere.write("@");
+				savehere.newLine();
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.exit(-1);

@@ -279,15 +279,15 @@ public abstract class UI {
 			else if (cp[1] == 8)
 				UI.Alert("Sala de Jogos");
 		}
-		
+
 	}
-	
-	public static int InComodo(){
+
+	public static int InComodo() {
 		Player p = Control.GetCurrP();
 		int ret = p.getPosV();
-		if(ret < 0){
+		if (ret < 0) {
 			return 1;
-		}else{
+		} else {
 			return 0;
 		}
 	}

@@ -32,7 +32,7 @@ public class GamePanel extends JPanel {
 			System.out.println(e.getMessage());
 			System.exit(1);
 		}
-		
+
 	}
 
 	public void paintComponent(Graphics g) {

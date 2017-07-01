@@ -136,32 +136,32 @@ public class CardSelector extends JPanel {
 
 	private void IniInventory(Player p) {
 		int i = 0;
-		
+
 		for (JCheckBox j1 : armas) {
 			if (p.hasCard(0, i) == 1) {
 				j1.setSelected(true);
 			}
 			i++;
 		}
-		
+
 		i = 0;
-		
+
 		for (JCheckBox j2 : suspeitos) {
 			if (p.hasCard(1, i) == 1) {
 				j2.setSelected(true);
 			}
 			i++;
 		}
-		
+
 		i = 0;
-		
+
 		for (JCheckBox j3 : comodos) {
 			if (p.hasCard(2, i) == 1) {
 				j3.setSelected(true);
 			}
 			i++;
 		}
-		
+
 	}
-	
+
 }

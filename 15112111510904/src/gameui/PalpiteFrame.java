@@ -13,7 +13,7 @@ final class PalpiteOKHandler implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.PalpiteSelection();
 		int ret = UI.Palpite(p);
-		if(UI.InComodo() == 1){
+		if (UI.InComodo() == 1) {
 			if (ret == 1) {
 				System.out.println("Acertou o palpite!");
 			} else if (ret == 0) {
@@ -21,9 +21,9 @@ final class PalpiteOKHandler implements ActionListener {
 				Control.AddCardCurr(cp[0], cp[1]);
 				UI.PrintCP(cp);
 				System.out.println("Errou palpite!");
-			}	
+			}
 		} else {
-			UI.Alert("Palpites devem ser feitos dentro de cômodos.");
+			UI.Alert("Palpites devem ser feitos dentro de cï¿½modos.");
 		}
 		UI.ClosePalpiteFrame();
 	}
@@ -55,7 +55,7 @@ public class PalpiteFrame extends JFrame implements GuessObserved {
 		b.addActionListener(new PalpiteOKHandler());
 
 		panel.add(b);
-		
+
 		this.SetObserver();
 	}
 
@@ -215,8 +215,8 @@ public class PalpiteFrame extends JFrame implements GuessObserved {
 
 		return vet;
 	}
-	
-	public void SetObserver(){
+
+	public void SetObserver() {
 		obs = PalpiteObserver.GetPalpiteObserver();
 	}
 }

@@ -58,6 +58,5 @@ public class PlayMenu extends JPanel {
 		this.add(acuse);
 		this.add(palpite);
 		this.add(next);
-		// this.setBackground(Color.BLUE);
 	}
 }
