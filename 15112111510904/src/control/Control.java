@@ -187,6 +187,10 @@ public abstract class Control {
 		Player p = rodada.getCurrP();
 		p.addCard(type, card);
 	}
+	
+	public static void RemoveCurrP(){
+		jogadores.remove(Control.GetCurrP());
+	}
 
 	public static void SaveThisGame(File f) {
 		new SaveGame(f);

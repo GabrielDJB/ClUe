@@ -6,10 +6,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import observers.AcuseObserved;
-import observers.AcuseObserver;
+//import observers.AcuseObserver;
 import observers.AcusaObserver;
 
 final class AcusaOKHandler implements ActionListener {
+	
+	AcusaFrame frame;
+	
+	public AcusaOKHandler(AcusaFrame f){
+		frame = f;
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.AcusaSelection();
@@ -20,12 +26,14 @@ final class AcusaOKHandler implements ActionListener {
 				System.out.println("Ganharam o jogo!");
 				System.exit(0);
 			} else if (ret == 0) {
-				int cp[] = Control.CounterProof(p);
+				int cp[] = frame.RequestCP(p);
 				UI.PrintCP(cp);
+				frame.RequestPlayerRemoval();
+				UI.Alert("Jogador atual foi removido!");
 				System.out.println("Errou acusacao!");
 			}
 		} else {
-			UI.Alert("Acusaï¿½ï¿½es devem ser feitas dentro de cï¿½modos!");
+			UI.Alert("Acusações devem ser feitas dentro de cômodos!");
 		}
 		UI.CloseAcusaFrame();
 	}
@@ -55,7 +63,7 @@ public class AcusaFrame extends JFrame implements AcuseObserved {
 		this.setBounds(100, 100, 480, 490);
 		this.setResizable(false);
 		b.setBounds(220, 360, 200, 50);
-		b.addActionListener(new AcusaOKHandler());
+		b.addActionListener(new AcusaOKHandler(this));
 
 		panel.add(b);
 
@@ -221,5 +229,13 @@ public class AcusaFrame extends JFrame implements AcuseObserved {
 
 	public void SetObserver() {
 		obs = AcusaObserver.GetInstance();
+	}
+	
+	public int[] RequestCP(int[] p){
+		return obs.ProvideCP(p);
+	}
+	
+	public void RequestPlayerRemoval(){
+		obs.RequestPlayerRemoval();
 	}
 }

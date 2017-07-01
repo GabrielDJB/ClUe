@@ -1,4 +1,5 @@
 package observers;
+import control.Control;
 
 public class AcusaObserver implements AcuseObserver {
 	AcuseObserved control, view;
@@ -19,5 +20,14 @@ public class AcusaObserver implements AcuseObserver {
 
 	public void SetObservedView(AcuseObserved v) {
 		view = v;
+	}
+	
+	public int[] ProvideCP(int[] p){
+		return Control.CounterProof(p);
+	}
+	
+	public void RequestPlayerRemoval(){
+		//Aqui vai rolar o pedido de remoção de jogador da lista.
+		Control.RemoveCurrP();
 	}
 }
