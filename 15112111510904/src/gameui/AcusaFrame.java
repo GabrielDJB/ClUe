@@ -33,7 +33,7 @@ final class AcusaOKHandler implements ActionListener {
 				System.out.println("Errou acusacao!");
 			}
 		} else {
-			UI.Alert("Acusações devem ser feitas dentro de cômodos!");
+			UI.Alert("AcusaÃ§Ãµes devem ser feitas dentro de cÃ´modos!");
 		}
 		UI.CloseAcusaFrame();
 	}

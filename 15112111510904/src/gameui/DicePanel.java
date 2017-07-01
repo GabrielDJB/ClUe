@@ -12,8 +12,6 @@ import java.util.Random;
 //
 // Classe DiceButtonHandler - ActionListener
 //
-// Descrição: Listener do botão de dados. Caso esse botão seja clicado, abre a janela para seleção de dados. Posteriormente causar uma nova jogada de dado.
-//
 // Métodos: actionPerformed
 //
 
@@ -21,9 +19,6 @@ final class DiceButtonHandler implements ActionListener {
 
 	//
 	// Método actionPerformed
-	//
-	// Descrição: Método acionado quando o botão é clicado, abrindo a janela de
-	// seleção de botão, através de UI.DiceSelect().
 	//
 	// Parâmetros: ActionEvent e - Referência à ação realizada sobre o botão de
 	// dados.
@@ -46,9 +41,6 @@ final class DiceButtonHandler implements ActionListener {
 
 //
 // Classe DicePanel - JPanel
-//
-// Descrição: Painel contendo o botão de dados e responsável pela exibição do
-// dados selecionado.
 //
 // Métodos: DicePanel (Construtor), SetImage
 //
@@ -74,7 +66,7 @@ public class DicePanel extends JPanel {
 		diceImage.setHorizontalAlignment(JLabel.CENTER);
 		dice.addActionListener(new DiceButtonHandler());
 
-		DiceIcon1 = new ImageIcon("img/Tabuleiros/dado1.jgg");
+		DiceIcon1 = new ImageIcon("img/Tabuleiros/dado1.jpg");
 		if (DiceIcon1.getImageLoadStatus() == MediaTracker.ERRORED) {
 			System.out.println("Deu ruim no carregamento da imagem de dados 1");
 		}
@@ -118,32 +110,26 @@ public class DicePanel extends JPanel {
 			diceImage.setIcon(DiceIcon1);
 			diceImage.repaint();
 			diceImage.setVisible(true);
-			System.out.println("Repaint 1");
 		} else if (dice == 2) {
 			diceImage.setIcon(DiceIcon2);
 			diceImage.repaint();
 			diceImage.setVisible(true);
-			System.out.println("Repaint 2");
 		} else if (dice == 3) {
 			diceImage.setIcon(DiceIcon3);
 			diceImage.repaint();
 			diceImage.setVisible(true);
-			System.out.println("Repaint 3");
 		} else if (dice == 4) {
 			diceImage.setIcon(DiceIcon4);
 			diceImage.repaint();
 			diceImage.setVisible(true);
-			System.out.println("Repaint 4");
 		} else if (dice == 5) {
 			diceImage.setIcon(DiceIcon5);
 			diceImage.repaint();
 			diceImage.setVisible(true);
-			System.out.println("Repaint 5");
 		} else if (dice == 6) {
 			diceImage.setIcon(DiceIcon6);
 			diceImage.repaint();
 			diceImage.setVisible(true);
-			System.out.println("Repaint 6");
 		} else {
 			UI.Alert("Valor Inválido no dado!");
 		}
