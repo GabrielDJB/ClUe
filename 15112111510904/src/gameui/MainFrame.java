@@ -11,6 +11,7 @@ import java.awt.*;
 // Métodos: MainFrame (Construtor), StartMenu, CharSelectMenu, GameMenu, ChooseDice, RepaintMap
 //
 
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame {
 	public final int DEFAULT_WIDTH = 1200; // 800;
 	public final int DEFAULT_HEIGHT = 1000;// 700;

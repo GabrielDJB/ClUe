@@ -99,6 +99,7 @@ final class TratadorCancelar implements ActionListener {
 // Métodos: CharSelectPanel (Construtor), IniCharList, UserButtons
 //
 
+@SuppressWarnings("serial")
 public class CharSelectPanel extends JPanel {
 	int width;
 	int height;

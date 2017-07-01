@@ -104,6 +104,7 @@ final class MapHandler implements MouseListener {
 // Métodos: MapPanel (Construtor), paintComponent
 //
 
+@SuppressWarnings("serial")
 public class MapPanel extends JPanel {
 	int width;
 	int height;

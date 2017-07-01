@@ -34,6 +34,7 @@ final class PalpiteOKHandler implements ActionListener {
 	}
 }
 
+@SuppressWarnings("serial")
 public class PalpiteFrame extends JFrame implements GuessObserved {
 	ButtonGroup s, a, l;
 	JRadioButton suspeitos[] = new JRadioButton[6];

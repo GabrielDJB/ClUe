@@ -17,6 +17,7 @@ import java.awt.*;
 // Métodos: CardSelector (Construtor)
 //
 
+@SuppressWarnings("serial")
 public class CardSelector extends JPanel {
 	JCheckBox armas[] = new JCheckBox[6];
 	JCheckBox comodos[] = new JCheckBox[9];

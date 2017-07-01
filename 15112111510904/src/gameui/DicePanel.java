@@ -45,6 +45,7 @@ final class DiceButtonHandler implements ActionListener {
 // Métodos: DicePanel (Construtor), SetImage
 //
 
+@SuppressWarnings("serial")
 public class DicePanel extends JPanel {
 	JButton dice = new JButton("Jogar Dados");
 	JLabel diceImage = new JLabel();
