@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import observers.AcuseObserved;
+import observers.ObservedMV;
 import observers.AcusaObserver;
 
 final class AcusaOKHandler implements ActionListener {
@@ -39,7 +39,7 @@ final class AcusaOKHandler implements ActionListener {
 }
 
 @SuppressWarnings("serial")
-public class AcusaFrame extends JFrame implements AcuseObserved {
+public class AcusaFrame extends JFrame implements ObservedMV {
 	ButtonGroup s, a, l;
 	JRadioButton suspeitos[] = new JRadioButton[6];
 	JRadioButton armas[] = new JRadioButton[6];

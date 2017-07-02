@@ -2,8 +2,8 @@ package observers;
 
 import control.Control;
 
-public class AcusaObserver implements AcuseObserver {
-	AcuseObserved control, view;
+public class AcusaObserver implements ObserverMV {
+	ObservedMV control, view;
 	private static AcusaObserver instance;
 
 	private AcusaObserver() {
@@ -15,11 +15,11 @@ public class AcusaObserver implements AcuseObserver {
 		return instance;
 	}
 
-	public void SetObservedControl(AcuseObserved c) {
+	public void SetObservedControl(ObservedMV c) {
 		control = c;
 	}
 
-	public void SetObservedView(AcuseObserved v) {
+	public void SetObservedView(ObservedMV v) {
 		view = v;
 	}
 

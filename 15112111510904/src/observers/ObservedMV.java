@@ -2,6 +2,6 @@ package observers;
 
 public interface ObservedMV {
 	
-	public void SetObserved();
+	public void SetObserver();
 
 }

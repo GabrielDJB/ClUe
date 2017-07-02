@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import observers.PalpiteObserver;
-import observers.GuessObserved;
-import observers.GuessObserver;
+import observers.ObservedMV;
 
 final class PalpiteOKHandler implements ActionListener {
+	
 	PalpiteFrame frame;
 
 	public PalpiteOKHandler(PalpiteFrame f) {
@@ -35,7 +35,7 @@ final class PalpiteOKHandler implements ActionListener {
 }
 
 @SuppressWarnings("serial")
-public class PalpiteFrame extends JFrame implements GuessObserved {
+public class PalpiteFrame extends JFrame implements ObservedMV {
 	ButtonGroup s, a, l;
 	JRadioButton suspeitos[] = new JRadioButton[6];
 	JRadioButton armas[] = new JRadioButton[6];
@@ -44,7 +44,7 @@ public class PalpiteFrame extends JFrame implements GuessObserved {
 	JPanel panel;
 	Container c = this.getContentPane();
 	JButton b = new JButton("Submeter Palpite");
-	GuessObserver obs;
+	PalpiteObserver obs;
 
 	public PalpiteFrame() {
 

@@ -5,12 +5,11 @@ import control.Control;
 //
 // Observador Singleton
 //
-public class PalpiteObserver implements GuessObserver {
-	private static GuessObserved control, view;
+public class PalpiteObserver implements ObserverMV {
+	private static ObservedMV control, view;
 	private static PalpiteObserver instance;
 
-	private PalpiteObserver() {
-	}
+	private PalpiteObserver() {}
 
 	public static PalpiteObserver GetPalpiteObserver() {
 		if (instance == null)
@@ -18,11 +17,11 @@ public class PalpiteObserver implements GuessObserver {
 		return instance;
 	}
 
-	public void SetObservedControl(GuessObserved c) {
+	public void SetObservedControl(ObservedMV c) {
 		control = c;
 	}
 
-	public void SetObservedView(GuessObserved v) {
+	public void SetObservedView(ObservedMV v) {
 		view = v;
 	}
 

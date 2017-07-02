@@ -2,10 +2,11 @@ package gameui;
 
 import javax.swing.*;
 
-import control.Control;
 import control.Player;
 
 import java.awt.*;
+import observers.CartaObserver;
+import observers.ObservedMV;
 
 //
 // Classe CardSelector - JPanel
@@ -18,11 +19,12 @@ import java.awt.*;
 //
 
 @SuppressWarnings("serial")
-public class CardSelector extends JPanel {
+public class CardSelector extends JPanel implements ObservedMV {
 	JCheckBox armas[] = new JCheckBox[6];
 	JCheckBox comodos[] = new JCheckBox[9];
 	JCheckBox suspeitos[] = new JCheckBox[6];
 	JLabel armasl, comodosl, suspeitosl;
+	CartaObserver obs;
 	Player p;
 
 	//
@@ -36,11 +38,14 @@ public class CardSelector extends JPanel {
 	//
 
 	public CardSelector(Container c) {
+		
 		super(null);
-
+		this.SetObserver();
+		
 		// Initializing variables
 
-		p = Control.GetCurrP();
+		//p = Control.GetCurrP();
+		p = obs.GetCurrP();
 
 		armasl = new JLabel("Armas");
 		comodosl = new JLabel("Comodos");
@@ -133,6 +138,7 @@ public class CardSelector extends JPanel {
 
 		this.setVisible(true);
 		c.add(this);
+		
 	}
 
 	private void IniInventory(Player p) {
@@ -163,6 +169,10 @@ public class CardSelector extends JPanel {
 			i++;
 		}
 
+	}
+	
+	public void SetObserver(){
+		obs = CartaObserver.GetInstance();
 	}
 
 }

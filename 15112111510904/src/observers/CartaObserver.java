@@ -1,8 +1,10 @@
 package observers;
+import control.Control;
+import control.Player;
 
-public class CartaObserver implements CardObserver {
+public class CartaObserver implements ObserverMV {
 	
-	CardObserved control, view;
+	ObservedMV control, view;
 	private static CartaObserver instance;
 	
 	private CartaObserver(){}
@@ -13,11 +15,15 @@ public class CartaObserver implements CardObserver {
 		return instance;
 	}
 	
-	public void SetObservedControl(CardObserved c){
+	public void SetObservedControl(ObservedMV c){
 		control = c;
 	}
 	
-	public void SetObservedView(CardObserved v){
+	public void SetObservedView(ObservedMV v){
 		view = v;
+	}
+	
+	public Player GetCurrP(){
+		return Control.GetCurrP();
 	}
 }
