@@ -2,6 +2,8 @@ package control;
 
 import java.awt.*;
 
+import gameui.UI;
+
 //
 // Classe Player - Final
 //
@@ -16,7 +18,7 @@ public final class Player {
 	private int posInicial;
 	private int _loc;
 	private static int arrayLoc = 0;
-	private static int posVertex[] = new int[6];
+	private static int posVertex[] = { -321, -321, -321, -321, -321, 321 };
 	private int posx;
 	private int posy;
 	private String name = new String();
@@ -26,6 +28,7 @@ public final class Player {
 	private int armas[] = { 0, 0, 0, 0, 0, 0 };
 	private int suspeitos[] = { 0, 0, 0, 0, 0, 0 };
 	private int comodos[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	private boolean hasPlayed = false;
 
 	//
 	// Construtor Player
@@ -42,7 +45,6 @@ public final class Player {
 		this.name = name;
 		this.posInicial = posInicial;
 		_loc = arrayLoc++;
-		Player.posVertex[_loc] = -321;
 		color = c;
 		posx = px;
 		posy = py;
@@ -85,9 +87,16 @@ public final class Player {
 	//
 
 	public void setPos(int x, int y) {
+		
+		if (hasPlayed) {
+			UI.Alert(name + ", passe o turno!");
+			return;
+		}
+		
 		posx = x;
 		posy = y;
 		jogadas++;
+		hasPlayed = true;
 	}
 
 	//
@@ -197,6 +206,18 @@ public final class Player {
 
 	public void setSuspeitos(int[] array) {
 		suspeitos = array;
+	}
+	
+	public void resetStatus() {
+		hasPlayed= false;
+	}
+	
+	public void setStatus(boolean v) {
+		hasPlayed = v;
+	}
+	
+	public boolean getStatus() {
+		return hasPlayed;
 	}
 
 	// tipo 0 = armas; tipo 1 = suspeitos; tipo 2 = comodos

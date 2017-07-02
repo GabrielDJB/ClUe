@@ -65,6 +65,7 @@ public final class Round {
 
 	public Player nextTurn() {
 		Player p = getCurrP();
+		p.resetStatus();
 		Control.jogadores.remove(0);
 		Control.jogadores.add(Control.jogadores.size(), p);
 		dado = 0;

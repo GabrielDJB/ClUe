@@ -35,6 +35,7 @@ public final class LoadGame {
 		populateArmas();
 		populateComodos();
 		populateSuspeitos();
+		Control.jogadores.get(playeridx).setStatus(readthis.nextBoolean());
 	}
 
 	private void populateArmas() {

@@ -60,6 +60,7 @@ public final class SaveGame {
 				dump(p.getArmas());
 				dump(p.getComodos());
 				dump(p.getSuspeitos());
+				savehere.write(p.getStatus() + "");
 				savehere.write("@");
 				savehere.newLine();
 			} catch (Exception e) {
