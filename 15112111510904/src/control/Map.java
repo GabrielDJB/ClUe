@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+@SuppressWarnings("serial")
 
 final class MapaGenerateException extends Exception {
 	public MapaGenerateException() {
@@ -93,9 +94,7 @@ final class Graph {
 					throw new MapaGenerateException();
 
 				index = f.nextInt() - 1;
-				System.out.println("Id " + index);
 				count = f.nextInt();
-				System.out.println("Vizi " + count);
 
 				while (count != 0) {
 					v[index].addNeighbour(v[f.nextInt() - 1]);

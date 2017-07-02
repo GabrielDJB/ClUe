@@ -1,9 +1,9 @@
 package observers;
 import control.Control;
+
 //
 // Observador Singleton
 //
-
 public class PalpiteObserver implements GuessObserver {
 	private static GuessObserved control, view;
 	private static PalpiteObserver instance;

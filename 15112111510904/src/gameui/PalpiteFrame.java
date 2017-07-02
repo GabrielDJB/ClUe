@@ -28,12 +28,13 @@ final class PalpiteOKHandler implements ActionListener {
 				System.out.println("Errou palpite!");
 			}
 		} else {
-			UI.Alert("Palpites devem ser feitos dentro de c�modos.");
+			UI.Alert("Palpites devem ser feitos dentro de cômodos.");
 		}
 		UI.ClosePalpiteFrame();
 	}
 }
 
+@SuppressWarnings("serial")
 public class PalpiteFrame extends JFrame implements GuessObserved {
 	ButtonGroup s, a, l;
 	JRadioButton suspeitos[] = new JRadioButton[6];

@@ -32,6 +32,7 @@ final class PalpiteHandler implements ActionListener {
 // Métodos: PlayMenu
 //
 
+@SuppressWarnings("serial")
 public class PlayMenu extends JPanel {
 	JButton acuse;
 	JButton next;

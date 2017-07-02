@@ -4,12 +4,10 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import control.Control;
-import control.SaveGame;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 //
 // Classe CardButtonHandler - Action Listener
@@ -64,6 +62,7 @@ final class SaveButtonHandler implements ActionListener {
 // Métodos: CardPanel (Construtor)
 //
 
+@SuppressWarnings("serial")
 public class CardPanel extends JPanel {
 	int width;
 	int height;

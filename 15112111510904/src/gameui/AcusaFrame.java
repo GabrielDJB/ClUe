@@ -1,12 +1,10 @@
 package gameui;
 
 import javax.swing.*;
-import control.Control;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import observers.AcuseObserved;
-//import observers.AcuseObserver;
 import observers.AcusaObserver;
 
 final class AcusaOKHandler implements ActionListener {
@@ -33,13 +31,14 @@ final class AcusaOKHandler implements ActionListener {
 				System.out.println("Errou acusacao!");
 			}
 		} else {
-			UI.Alert("Acusações devem ser feitas dentro de cômodos!");
+			UI.Alert("AcusaÃ§Ãµes devem ser feitas dentro de cÃ´modos!");
 		}
 		UI.CloseAcusaFrame();
 	}
 
 }
 
+@SuppressWarnings("serial")
 public class AcusaFrame extends JFrame implements AcuseObserved {
 	ButtonGroup s, a, l;
 	JRadioButton suspeitos[] = new JRadioButton[6];

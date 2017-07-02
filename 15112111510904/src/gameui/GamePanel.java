@@ -11,6 +11,7 @@ import java.io.*;
 // Descrição: Painel do jogo original. Foi decomposto em diversos painéis diferentes. Caiu no desuso.
 //
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel {
 	int width;
 	int height;

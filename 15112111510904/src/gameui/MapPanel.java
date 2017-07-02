@@ -32,13 +32,9 @@ final class MapHandler implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		Player current = Control.GetCurrP();
 		int pos[] = current.getPos();
-		System.out.println(e.getX());
-		System.out.println(e.getY());
-		System.out.println(pos[0]);
-		System.out.println(pos[1]);
 
 		if (Control.rodada.getDado() == 0) {
-			UI.Alert(Control.jogadores.get(0).getNome() + " -> JOGUE O DADO!");
+			UI.Alert(Control.jogadores.get(0).getNome() + " --JOGUE O DADO!");
 		}
 
 		if (current.isActive() == false) {
@@ -55,7 +51,6 @@ final class MapHandler implements MouseListener {
 			int origem = Control.mapa.coordTransform(pos[0], pos[1]);
 
 			if (current.getNumJogadas() == 0) {
-				/* Jogador está na posição inicial */
 				origem = current.getPosV();
 			}
 			if (origem == destino && current.getNumJogadas() != 0) {
@@ -79,7 +74,6 @@ final class MapHandler implements MouseListener {
 				current.setActive(false);
 				current.setPos(e.getX(), e.getY());
 				current.setPosV(destino);
-				current.addJogada();
 			}
 
 			UI.RefreshMap();
@@ -110,6 +104,7 @@ final class MapHandler implements MouseListener {
 // Métodos: MapPanel (Construtor), paintComponent
 //
 
+@SuppressWarnings("serial")
 public class MapPanel extends JPanel {
 	int width;
 	int height;

@@ -167,10 +167,6 @@ public final class Player {
 		isActive = v;
 	}
 
-	public void addJogada() {
-		jogadas++;
-	}
-
 	public boolean isActive() {
 		return isActive;
 	}

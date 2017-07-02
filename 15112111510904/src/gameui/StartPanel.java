@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+
 //
 // Classe TratadorNovoJogo
 //
@@ -75,7 +76,7 @@ final class TratadorCarregarJogo implements ActionListener {
 		int ret;
 
 		ret = fc.showOpenDialog(parent);
-		if (ret == fc.APPROVE_OPTION) {
+		if (ret == JFileChooser.APPROVE_OPTION) {
 			new LoadGame(fc.getSelectedFile());
 			UI.mainf.dispose();
 			UI.GameStart();
@@ -94,6 +95,7 @@ final class TratadorCarregarJogo implements ActionListener {
 // Métodos: StartPanel (Construtor), paintComponent, IniButtons
 //
 
+@SuppressWarnings("serial")
 public class StartPanel extends JPanel {
 	int width;
 	int height;

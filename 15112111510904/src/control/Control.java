@@ -50,9 +50,6 @@ public abstract class Control {
 		GameArma = r.nextInt(6);
 		GameSuspeito = r.nextInt(6);
 		GameComodo = r.nextInt(9);
-		System.out.println(Integer.toString(GameArma));
-		System.out.println(Integer.toString(GameSuspeito));
-		System.out.println(Integer.toString(GameComodo));
 	}
 
 	//
