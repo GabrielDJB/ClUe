@@ -34,7 +34,7 @@ final class MapHandler implements MouseListener {
 		int pos[] = current.getPos();
 
 		if (Control.rodada.getDado() == 0) {
-			UI.Alert(Control.jogadores.get(0).getNome() + " --JOGUE O DADO!");
+			UI.Alert(Control.jogadores.get(0).getNome() + " - JOGUE O DADO!");
 		}
 
 		if (current.isActive() == false) {

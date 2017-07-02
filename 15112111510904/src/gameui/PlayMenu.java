@@ -8,6 +8,7 @@ import control.Control;
 final class NextPlayHandler implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Control.rodada.nextTurn();
+		UI.Alert(Control.jogadores.get(0).getNome() + " - JOGUE O DADO!");
 	}
 }
 
