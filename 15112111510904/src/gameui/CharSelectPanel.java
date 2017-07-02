@@ -117,7 +117,7 @@ public class CharSelectPanel extends JPanel {
 	public CharSelectPanel(int w, int h) {
 		this.width = w;
 		this.height = h;
-		boxes = new JCheckBox[7];
+		boxes = new JCheckBox[6];
 	}
 
 	//
@@ -135,13 +135,12 @@ public class CharSelectPanel extends JPanel {
 		l.setFont(new Font("Calibri", Font.PLAIN, 20));
 		l.setBounds(100, 75, 600, 50);
 
-		boxes[0] = new JCheckBox("Pele");
-		boxes[1] = new JCheckBox("Maradona");
-		boxes[2] = new JCheckBox("Eric Cantona");
-		boxes[3] = new JCheckBox("Zinedine Zidane");
-		boxes[4] = new JCheckBox("Ronaldinho Gaucho");
-		boxes[5] = new JCheckBox("Taffarel");
-		boxes[6] = new JCheckBox("Zico");
+		boxes[0] = new JCheckBox("White");
+		boxes[1] = new JCheckBox("Green");
+		boxes[2] = new JCheckBox("Peacock");
+		boxes[3] = new JCheckBox("Plum");
+		boxes[4] = new JCheckBox("Scarlet");
+		boxes[5] = new JCheckBox("Mustard");
 
 		boxes[0].setBounds(100, 150, 200, 30);
 		boxes[1].setBounds(100, 200, 200, 30);
@@ -149,7 +148,6 @@ public class CharSelectPanel extends JPanel {
 		boxes[3].setBounds(100, 300, 200, 30);
 		boxes[4].setBounds(100, 350, 200, 30);
 		boxes[5].setBounds(100, 400, 200, 30);
-		boxes[6].setBounds(100, 450, 200, 30);
 
 		this.add(l);
 

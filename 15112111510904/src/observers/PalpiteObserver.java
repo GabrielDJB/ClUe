@@ -1,4 +1,5 @@
 package observers;
+
 import control.Control;
 
 //
@@ -24,11 +25,11 @@ public class PalpiteObserver implements GuessObserver {
 	public void SetObservedView(GuessObserved v) {
 		view = v;
 	}
-	
-	public int[] ProvideCP(int[] p){
+
+	public int[] ProvideCP(int[] p) {
 		return Control.CounterProof(p);
 	}
-	
+
 	public void AddCardCurr(int c0, int c1) {
 		Control.AddCardCurr(c0, c1);
 	}

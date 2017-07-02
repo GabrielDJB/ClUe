@@ -8,10 +8,10 @@ import observers.AcuseObserved;
 import observers.AcusaObserver;
 
 final class AcusaOKHandler implements ActionListener {
-	
+
 	AcusaFrame frame;
-	
-	public AcusaOKHandler(AcusaFrame f){
+
+	public AcusaOKHandler(AcusaFrame f) {
 		frame = f;
 	}
 
@@ -229,12 +229,12 @@ public class AcusaFrame extends JFrame implements AcuseObserved {
 	public void SetObserver() {
 		obs = AcusaObserver.GetInstance();
 	}
-	
-	public int[] RequestCP(int[] p){
+
+	public int[] RequestCP(int[] p) {
 		return obs.ProvideCP(p);
 	}
-	
-	public void RequestPlayerRemoval(){
+
+	public void RequestPlayerRemoval() {
 		obs.RequestPlayerRemoval();
 	}
 }

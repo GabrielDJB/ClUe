@@ -22,16 +22,13 @@ import gameui.UI;
 public abstract class Control {
 	public static Map mapa = Map.GetMapa(); // Mapa do jogo
 	public static boolean JogoAtivo = false; // Determina se o jogo está rodando
-	public static Round rodada = Round.GetRodada(); // Manager de rodadas do jogo
+	public static Round rodada = Round.GetRodada(); // Manager de rodadas do
+													// jogo
 
 	private static Random r = new Random();
 	public static int GameArma;
 	public static int GameSuspeito;
 	public static int GameComodo;
-
-	// private int GunSelect[] = {1,1,1,1,1,1};
-	// private int SuspectSelect[] = {1,1,1,1,1,1};
-	// private int LocalSelect[] = {1,1,1,1,1,1,1,1,1};
 
 	// Lista dos jogadores da instância do jogo
 	public static List<Player> jogadores = new ArrayList<Player>();
@@ -65,17 +62,17 @@ public abstract class Control {
 	public static void AddPlayer(String name) {
 		Player p = null;
 
-		if (name.compareTo(new String("Pele")) == 0) {
+		if (name.compareTo(new String("White")) == 0) {
 			p = new Player(name, 2, 370, 75, Color.white);
-		} else if (name.compareTo(new String("Maradona")) == 0) {
+		} else if (name.compareTo(new String("Green")) == 0) {
 			p = new Player(name, 3, 525, 75, Color.green);
-		} else if (name.compareTo(new String("Eric Cantona")) == 0) {
+		} else if (name.compareTo(new String("Peacock")) == 0) {
 			p = new Player(name, 31, 820, 290, Color.blue);
-		} else if (name.compareTo(new String("Zinedine Zidane")) == 0) {
+		} else if (name.compareTo(new String("Plum")) == 0) {
 			p = new Player(name, 158, 820, 745, Color.cyan);
-		} else if (name.compareTo(new String("Ronaldinho Gaucho")) == 0) {
+		} else if (name.compareTo(new String("Scarlet")) == 0) {
 			p = new Player(name, 177, 305, 930, Color.red);
-		} else if (name.compareTo(new String("Taffarel")) == 0) {
+		} else if (name.compareTo(new String("Mustard")) == 0) {
 			p = new Player(name, 122, 75, 680, Color.yellow);
 		}
 
@@ -85,17 +82,17 @@ public abstract class Control {
 	public static void AddPlayer(String name, int graph, int njogadas, int x, int y) {
 		Player p = null;
 
-		if (name.compareTo(new String("Pele")) == 0) {
+		if (name.compareTo(new String("White")) == 0) {
 			p = new Player(name, njogadas, graph, x, y, Color.white);
-		} else if (name.compareTo(new String("Maradona")) == 0) {
+		} else if (name.compareTo(new String("Green")) == 0) {
 			p = new Player(name, njogadas, graph, x, y, Color.green);
-		} else if (name.compareTo(new String("Eric Cantona")) == 0) {
+		} else if (name.compareTo(new String("Peacock")) == 0) {
 			p = new Player(name, njogadas, graph, x, y, Color.blue);
-		} else if (name.compareTo(new String("Zinedine Zidane")) == 0) {
+		} else if (name.compareTo(new String("Plum")) == 0) {
 			p = new Player(name, njogadas, graph, x, y, Color.cyan);
-		} else if (name.compareTo(new String("Ronaldinho Gaucho")) == 0) {
+		} else if (name.compareTo(new String("Scarlet")) == 0) {
 			p = new Player(name, njogadas, graph, x, y, Color.red);
-		} else if (name.compareTo(new String("Taffarel")) == 0) {
+		} else if (name.compareTo(new String("Mustard")) == 0) {
 			p = new Player(name, njogadas, graph, x, y, Color.yellow);
 		}
 
@@ -184,8 +181,8 @@ public abstract class Control {
 		Player p = rodada.getCurrP();
 		p.addCard(type, card);
 	}
-	
-	public static void RemoveCurrP(){
+
+	public static void RemoveCurrP() {
 		jogadores.remove(Control.GetCurrP());
 	}
 

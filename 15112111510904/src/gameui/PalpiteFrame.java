@@ -10,11 +10,11 @@ import observers.GuessObserver;
 
 final class PalpiteOKHandler implements ActionListener {
 	PalpiteFrame frame;
-	
-	public PalpiteOKHandler(PalpiteFrame f){
+
+	public PalpiteOKHandler(PalpiteFrame f) {
 		frame = f;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		int p[] = UI.PalpiteSelection();
 		int ret = UI.Palpite(p);
@@ -225,12 +225,12 @@ public class PalpiteFrame extends JFrame implements GuessObserved {
 	public void SetObserver() {
 		obs = PalpiteObserver.GetPalpiteObserver();
 	}
-	
-	public int[] RequestCP (int[] p) {
+
+	public int[] RequestCP(int[] p) {
 		return obs.ProvideCP(p);
 	}
-	
-	public void RequestAddCard(int c0, int c1){
-		obs.AddCardCurr(c0,c1);
+
+	public void RequestAddCard(int c0, int c1) {
+		obs.AddCardCurr(c0, c1);
 	}
 }
